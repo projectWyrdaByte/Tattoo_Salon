@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js Fullscreen GLTFLoader Example</title>
+    <title>Untamed Ink</title>
     <style>
         body {
             margin: 0;
@@ -13,7 +13,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #744c9a; /* Background color */
         }
 
         html {
@@ -47,13 +46,10 @@
 </head>
 
 <body>
-    <!-- Button in the middle of the page -->
     <button class="center-button" onclick="startCameraAnimation()">Start Animation</button>
 
-    <!-- Load Three.js Core (Compatible Version) -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/build/three.min.js"></script>
 
-    <!-- Load GLTFLoader (Compatible Version) -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/examples/js/loaders/GLTFLoader.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/examples/js/controls/OrbitControls.js"></script>
@@ -82,7 +78,7 @@
 
         // GLTF Model Loader
         const loader = new THREE.GLTFLoader();
-        loader.load('./tattoo/1.glb', function (gltf) {
+        loader.load('./tattoo/2.glb', function (gltf) {
             const model = gltf.scene;
 
             model.traverse(function (child) {
