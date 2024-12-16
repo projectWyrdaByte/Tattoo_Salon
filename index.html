@@ -72,13 +72,13 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 10); // Adjust light intensity
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 20);
-        directionalLight.position.set(3, 10, 5); // Position the light for better shading
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 8);
+        directionalLight.position.set(5, 10, 4); // Position the light for better shading
         scene.add(directionalLight);
 
         // GLTF Model Loader
         const loader = new THREE.GLTFLoader();
-        loader.load('./tattoo/3.glb', function (gltf) {
+        loader.load('./tattoo/2fix.glb', function (gltf) {
             const model = gltf.scene;
 
             model.traverse(function (child) {
