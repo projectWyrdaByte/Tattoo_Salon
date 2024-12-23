@@ -89,6 +89,15 @@
             console.error('An error occurred:', error);
         });
 
+        const material = new THREE.MeshStandardMaterial({
+    color: 0xeeeeee,
+    metalness: 1,  // Metal surfaces are more reflective
+    roughness: 0   // A roughness of 0 will give you a smooth reflective surface
+});
+
+
+
+
         // OrbitControls
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
