@@ -31,8 +31,8 @@ canvas {
 
 .next-button {
     position: fixed;
-    bottom: 50%;
-    right: 50%;
+    right: 0;
+    bottom: 0;
     cursor: pointer;
     border: 0;
     background-color: transparent;
