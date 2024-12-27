@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    background-color: #744c9a;
+}
+
+html {
+    height: 100%;
+}
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Camera Position Display */
+.camera-position {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.next-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+}
+
+.next-image {
+    width: 100px;
+    height: 70px;
+}
