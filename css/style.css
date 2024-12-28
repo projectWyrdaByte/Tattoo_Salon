@@ -73,7 +73,7 @@ canvas {
     top: 0;
     right: -600px;
     width: 100%;
-    background: linear-gradient(to left, #181818 , #1818189f, #18181800);
+    background: linear-gradient(to left, #181818, #1818189f, #18181800);
     transition: transform 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -118,7 +118,8 @@ canvas {
 }
 
 .nav-item.visible::after {
-    width: calc(100% - 50px); /* Account for padding */
+    width: calc(100% - 50px);
+    /* Account for padding */
 }
 
 .nav-item:hover {
@@ -161,7 +162,7 @@ canvas {
     -moz-transition: .25s ease-in-out;
     -o-transition: .25s ease-in-out;
     transition: .25s ease-in-out;
-  }
+}
 
 .nav-icon span:nth-child(1) {
     top: 0px;
@@ -209,6 +210,7 @@ canvas {
     top: 39px;
     left: 8px;
 }
+
 .nav-icon-container {
     position: fixed;
     right: 0;
@@ -232,6 +234,8 @@ canvas {
     .nav-container {
         width: 100vw;
         right: -100vw;
+        background: linear-gradient(to left, #181818, #181818d0, #18181879);
+
     }
 
     .nav.active .nav-container {
@@ -310,11 +314,13 @@ canvas {
 /* Landscape orientation */
 @media screen and (max-height: 480px) and (orientation: landscape) {
     .nav-container {
-        padding-top: 80px; /* Less top padding */
+        padding-top: 80px;
+        /* Less top padding */
     }
 
     .nav-item {
-        font-size: 28px; /* Smaller font for landscape */
+        font-size: 28px;
+        /* Smaller font for landscape */
         padding: 8px 15px;
     }
 
