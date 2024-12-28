@@ -230,65 +230,80 @@ canvas {
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     .nav-container {
-        width: 100%; /* Full width on mobile */
-        right: -100%; /* Hide off-screen */
+        width: 100vw;
+        right: -100vw;
     }
 
     .nav.active .nav-container {
-        transform: translateX(-100%);
+        transform: translateX(-100vw);
     }
 
     .nav-item {
-        font-size: 42px; /* Smaller font on mobile */
-        padding: 12px 20px;
+        font-size: 42px;
+        padding: 12px 25px;
+        text-align: right;
+        margin-right: 20px;
     }
 
     .nav-icon {
-        width: 45px; /* Smaller icon */
-        height: 35px;
-        margin: 30px auto;
+        width: 30px;
+        height: 20px;
+        margin: 25px auto;
     }
 
     .nav-icon span {
-        height: 6px; /* Thinner lines */
+        height: 3px;
+        width: 100%;
     }
 
     .nav-icon span:nth-child(2) {
-        top: 14px; /* Adjust middle line position */
+        top: 9px;
     }
 
     .nav-icon span:nth-child(3) {
-        top: 28px; /* Adjust bottom line position */
+        top: 18px;
+    }
+
+    .nav-icon.open span:nth-child(1) {
+        top: 0;
+        left: 3px;
+    }
+
+    .nav-icon.open span:nth-child(3) {
+        top: 20px;
+        left: 3px;
+    }
+
+    .nav-icon-container {
+        padding: 0px 25px;
+        top: 15px;
     }
 }
 
 /* Even smaller screens */
 @media screen and (max-width: 480px) {
     .nav-item {
-        font-size: 32px; /* Even smaller font */
-        padding: 10px 15px;
+        font-size: 32px;
+        margin-right: 15px;
     }
 
     .nav-icon {
-        width: 35px; /* Even smaller icon */
-        height: 25px;
-        margin: 25px auto;
+        width: 30px;
+        height: 20px;
     }
 
     .nav-icon span {
         height: 4px;
     }
 
-    .nav-icon span:nth-child(2) {
-        top: 10px;
+    .nav-icon.open span:nth-child(1) {
+        top: 0;
+        left: 3px;
     }
 
-    .nav-icon span:nth-child(3) {
+    .nav-icon.open span:nth-child(3) {
         top: 20px;
-    }
-
-    .nav-icon-container {
-        padding: 0px 20px; /* Less padding */
+        left: 3px;
     }
 }
 
