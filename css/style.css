@@ -232,14 +232,14 @@ canvas {
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     .nav-container {
-        width: 100vw;
-        right: -100vw;
+        width: 96vw;
+        right: -96vw;
         background: linear-gradient(to left, #181818, #181818d0, #18181879);
 
     }
 
     .nav.active .nav-container {
-        transform: translateX(-100vw);
+        transform: translateX(-96vw);
     }
 
     .nav-item {
