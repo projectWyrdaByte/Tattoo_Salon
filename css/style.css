@@ -234,7 +234,7 @@ canvas {
     .nav-container {
         width: 96vw;
         right: -96vw;
-        background: linear-gradient(to left, #181818, #181818d0, #18181879);
+        background: linear-gradient(to left, #181818, #181818ce, #18181800);
 
     }
 
