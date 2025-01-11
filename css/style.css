@@ -19,7 +19,7 @@ canvas {
 /* Camera Position Display */
 .camera-position {
     position: absolute;
-    top: 10px;
+    top: 10px;  
     left: 10px;
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
@@ -73,7 +73,7 @@ canvas {
     top: 0;
     right: -600px;
     width: 100%;
-    background: linear-gradient(to left, #181818, #1818189f, #18181800);
+    background: linear-gradient(to left, #181818, #1818189f 70%, #18181800);
     transition: transform 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -89,7 +89,7 @@ canvas {
 
 .nav-item {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(400px);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     color: white;
@@ -99,31 +99,19 @@ canvas {
     pointer-events: none;
 }
 
-.nav-item::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 4px;
-    bottom: 6px;
-    border-radius: 10px;
-    left: 25px;
-    background-color: white;
-    transition: width 0.4s ease-in-out;
-}
+
 
 .nav-item.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     pointer-events: auto;
 }
 
-.nav-item.visible::after {
-    width: calc(100% - 50px);
-    /* Account for padding */
-}
+
 
 .nav-item:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: #587c8d;
+    transition: color 0.2s ease-in-out;
 }
 
 

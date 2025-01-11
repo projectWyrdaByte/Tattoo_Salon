@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	displayNav();
+
+	
 	displayBtn();
 });
 
