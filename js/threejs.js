@@ -34,6 +34,7 @@ loader.load('./tattoo/idk.glb', function (gltf) {
 });
 
 
+
 // OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -133,3 +134,66 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Button not found!'); // Debug log
     }
 });
+
+
+const mouse = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
+
+
+let clickableModels = []; // Array to store all clickable models
+
+// GLTF Model Loader for the first model
+loader.load('./tattoo/idk.glb', function (gltf) {
+    const model1 = gltf.scene;
+    model1.scale.set(2, 2, 2);
+    model1.position.set(0, -1, 0);
+    scene.add(model1);
+
+    model1.userData = { url: 'https://example.com' }; // URL for the first model
+    clickableModels.push(model1); // Add to clickable models array
+}, undefined, function (error) {
+    console.error('An error occurred:', error);
+});
+
+// GLTF Model Loader for the second model
+loader.load('./tattoo/1.glb', function (gltf) {
+    const model2 = gltf.scene;
+    model2.scale.set(1.5, 1.5, 1.5);
+    model2.position.set(202, 20, 2); // Position it to the right of the first model
+    scene.add(model2);
+
+    model2.userData = { url: 'https://google.com' }; // URL for the second model
+    clickableModels.push(model2); // Add to clickable models array
+}, undefined, function (error) {
+    console.error('An error occurred:', error);
+});
+
+// Click event listener
+window.addEventListener('click', onClick, false);
+
+function onClick(event) {
+    // Convert mouse position to normalized device coordinates (-1 to +1)
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // Update the raycaster with the camera and mouse position
+    raycaster.setFromCamera(mouse, camera);
+
+    // Check for intersections with all clickable models
+    const intersects = raycaster.intersectObjects(clickableModels, true);
+
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+
+        // Traverse up to find the root object with userData
+        while (clickedObject.parent && !clickedObject.userData.url) {
+            clickedObject = clickedObject.parent;
+        }
+
+        // Redirect based on the URL stored in userData
+        if (clickedObject.userData.url) {
+            window.location.href = clickedObject.userData.url;
+        }
+    }
+}
+
