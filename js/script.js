@@ -131,9 +131,9 @@ function animateToContacts() {
 	};
 
 	const endPos = {
-		x: -51.20,
-		y: 19.20,
-		z: 47.93,
+		x: -49.83,
+		y: 18.92,
+		z: 47.35,
 		targetX: -59.07,
 		targetY: 17.05,
 		targetZ: 49.31
