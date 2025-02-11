@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	displayBtn();
 });
 
-showGallery()
 
 function displayNav() {
 	const nav = document.getElementById('nav');
@@ -103,8 +102,30 @@ function showGallery(){
         <div class="popup-content">
             <div class="bg">
                 <div class="pop-up">
-                    
- 
+<div class="slider-container">
+    <div class="slider-wrapper">
+        <div class="slide previous-slide">
+            <img src="image3.jpg" alt="Previous Slide">
+        </div>
+        <div class="slider">
+            <div class="slide main-slide">
+                <img src="image1.jpg" alt="Image 1">
+            </div>
+            <div class="slide next-slide">
+                <img src="image2.jpg" alt="Next Slide">
+            </div>
+        </div>
+        <div class="slide next-slide">
+            <img src="image2.jpg" alt="Next Slide">
+        </div>
+    </div>
+
+    <div class="menu">
+        <button class="menu-button left">&lt;</button>
+        <button class="menu-button right">&gt;</button>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>
@@ -124,6 +145,41 @@ function showGallery(){
 	});
 
 }
+
+
+// Slider functionality
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide.main-slide, .slide.previous-slide, .slide.next-slide');
+const leftButton = document.querySelector('.menu-button.left');
+const rightButton = document.querySelector('.menu-button.right');
+
+let currentIndex = 0;
+const totalSlides = slides.length;
+
+function updateSlides() {
+    const previousIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    const nextIndex = (currentIndex + 1) % totalSlides;
+
+    slides[0].querySelector('img').src = slides[previousIndex].querySelector('img').src;
+    slides[1].querySelector('img').src = slides[currentIndex].querySelector('img').src;
+    slides[2].querySelector('img').src = slides[nextIndex].querySelector('img').src;
+}
+
+rightButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlides();
+});
+
+leftButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlides();
+});
+
+updateSlides();
+
+
+
+
 
 function animateToAboutUs() {
 	console.log('Animation to Contacts started');
