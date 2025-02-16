@@ -37,15 +37,6 @@ const dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/libs/draco/');
 loader.setDRACOLoader(dracoLoader);
 
-loader.load('./tattoo/final.glb', function (gltf) {
-    const model = gltf.scene;
-    model.scale.set(2, 2, 2);
-    model.position.set(0, -1, 0);
-    scene.add(model);
-}, undefined, function (error) {
-    console.error('An error occurred:', error);
-});
-
 // OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -145,3 +136,339 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Button not found!'); // Debug log
     }
 });
+
+
+function animateCamera() {
+	console.log('Animation started');
+
+	const button = document.getElementById('animateCamera');
+	button.style.display = 'none';
+
+	const startPos = {
+		x: camera.position.x,
+		y: camera.position.y,
+		z: camera.position.z,
+		targetX: controls.target.x,
+		targetY: controls.target.y,
+		targetZ: controls.target.z
+	};
+
+	const endPos = {
+		x: 48.76,
+		y: 65.56,
+		z: 56.23,
+		targetX: -57.31,
+		targetY: 12.14,
+		targetZ: -71.57
+	};
+
+	new TWEEN.Tween(startPos)
+		.to(endPos, 2000)
+		.easing(TWEEN.Easing.Quadratic.InOut)
+		.onUpdate(() => {
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+			controls.update();
+		})
+		.onComplete(() => {
+			console.log('Animation completed');
+
+			// Show nav icon as an X
+			const navIconContainer = document.querySelector('.nav-icon-container');
+			const navIcon = document.getElementById('nav-icon');
+			navIconContainer.style.display = 'block';
+			navIcon.classList.add('open'); // Start as X
+
+			setTimeout(() => {
+				navIconContainer.classList.add('visible');
+			}, 50);
+
+			// Show nav menu after a short delay
+			setTimeout(() => {
+				const nav = document.getElementById('nav');
+
+				nav.style.display = 'flex';
+				nav.classList.add('visible');
+				nav.classList.add('active');
+
+				// Animate nav items
+				const navItems = Array.from(document.querySelectorAll('.nav-item'));
+				navItems.forEach((item, i) => {
+					setTimeout(() => {
+						console.log('Animating item', i);
+						item.classList.add('visible');
+					}, 800 + (i * 200));
+				});
+			}, 500);
+		})
+		.start();
+}
+
+
+function animateToAboutUs() {
+	console.log('Animation to Contacts started');
+
+	// Close the navigation menu first
+	const nav = document.getElementById('nav');
+	const navIconContainer = document.querySelector('.nav-icon-container');
+	const navIcon = document.getElementById('nav-icon');
+
+	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
+
+	const navItems = Array.from(document.querySelectorAll('.nav-item'));
+	navItems.forEach((item, i) => {
+		setTimeout(() => {
+			console.log('Hiding nav item', i);
+			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
+			item.classList.remove('visible');
+		}, i * 200); // Delay each item by 200ms
+	});
+
+	setTimeout(() => {
+		console.log('Closing nav menu');
+		nav.classList.remove('visible', 'active');
+		nav.style.display = 'none';
+		navIcon.classList.remove('open');
+	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+
+	// Define start and end positions
+	const startPos = {
+		x: camera.position.x,
+		y: camera.position.y,
+		z: camera.position.z,
+		targetX: controls.target.x,
+		targetY: controls.target.y,
+		targetZ: controls.target.z
+	};
+
+	const endPos = {
+		x: -26.05,
+		y: 47.78,
+		z: 4.98,
+		targetX: -61.66,
+		targetY: 44.77,
+		targetZ: 4.94
+	};
+
+	// Start the tween animation
+	new TWEEN.Tween(startPos)
+		.to(endPos, 3000)
+		.easing(TWEEN.Easing.Quadratic.InOut)
+		.onUpdate(() => {
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+			controls.update();
+		})
+		.onComplete(() => {
+			console.log('Animation completed');
+
+			const navIconContainer = document.querySelector('.nav-icon-container');
+			const navIcon = document.getElementById('nav-icon');
+			navIconContainer.style.display = 'block';
+			navIcon.classList.remove('open'); // Start as X
+
+			setTimeout(() => {
+				navIconContainer.classList.add('visible');
+			}, 50);
+
+			// Show nav menu after a short delay
+			setTimeout(() => {
+				const nav = document.getElementById('nav');
+
+				nav.style.display = 'flex';
+				nav.classList.remove('visible');
+				nav.classList.remove('active');
+
+				// Animate nav items
+				const navItems = Array.from(document.querySelectorAll('.nav-item'));
+				navItems.forEach((item, i) => {
+					setTimeout(() => {
+						console.log('Animating item', i);
+						item.classList.add('visible');
+					}, 800 + (i * 200));
+				});
+			}, 500);
+
+			
+		})
+		.start();
+}
+
+function animateToContacts() {
+
+	// Close the navigation menu first
+	const nav = document.getElementById('nav');
+	const navIconContainer = document.querySelector('.nav-icon-container');
+	const navIcon = document.getElementById('nav-icon');
+
+	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
+
+	const navItems = Array.from(document.querySelectorAll('.nav-item'));
+	navItems.forEach((item, i) => {
+		setTimeout(() => {
+			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
+			item.classList.remove('visible');
+		}, i * 200); // Delay each item by 200ms
+	});
+
+	setTimeout(() => {
+		nav.classList.remove('visible', 'active');
+		nav.style.display = 'none';
+		navIcon.classList.remove('open');
+	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+
+	// Define start and end positions
+	const startPos = {
+		x: camera.position.x,
+		y: camera.position.y,
+		z: camera.position.z,
+		targetX: controls.target.x,
+		targetY: controls.target.y,
+		targetZ: controls.target.z
+	};
+
+	const endPos = {
+		x: -49.83,
+		y: 18.92,
+		z: 47.35,
+		targetX: -59.07,
+		targetY: 17.05,
+		targetZ: 49.31
+	};
+
+	// Start the tween animation
+	new TWEEN.Tween(startPos)
+		.to(endPos, 3000)
+		.easing(TWEEN.Easing.Quadratic.InOut)
+		.onUpdate(() => {
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+			controls.update();
+		})
+		.onComplete(() => {
+			console.log('Animation completed');
+
+			const navIconContainer = document.querySelector('.nav-icon-container');
+			const navIcon = document.getElementById('nav-icon');
+			navIconContainer.style.display = 'block';
+			navIcon.classList.remove('open'); // Start as X
+
+			setTimeout(() => {
+				navIconContainer.classList.add('visible');
+			}, 50);
+
+			// Show nav menu after a short delay
+			setTimeout(() => {
+				const nav = document.getElementById('nav');
+
+				nav.style.display = 'flex';
+				nav.classList.remove('visible');
+				nav.classList.remove('active');
+
+				// Animate nav items
+				const navItems = Array.from(document.querySelectorAll('.nav-item'));
+				navItems.forEach((item, i) => {
+					setTimeout(() => {
+						item.classList.add('visible');
+					}, 800 + (i * 200));
+				});
+			}, 500);
+
+			setTimeout(() => {
+				showPopUp();
+			}, 500);
+		})
+		.start();
+}
+
+
+function animateToGallery() {
+
+	// Close the navigation menu first
+	const nav = document.getElementById('nav');
+	const navIconContainer = document.querySelector('.nav-icon-container');
+	const navIcon = document.getElementById('nav-icon');
+
+	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
+
+	const navItems = Array.from(document.querySelectorAll('.nav-item'));
+	navItems.forEach((item, i) => {
+		setTimeout(() => {
+			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
+			item.classList.remove('visible');
+		}, i * 200); // Delay each item by 200ms
+	});
+
+	setTimeout(() => {
+		nav.classList.remove('visible', 'active');
+		nav.style.display = 'none';
+		navIcon.classList.remove('open');
+	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+
+	// Define start and end positions
+	const startPos = {
+		x: camera.position.x,
+		y: camera.position.y,
+		z: camera.position.z,
+		targetX: controls.target.x,
+		targetY: controls.target.y,
+		targetZ: controls.target.z
+	};
+
+	const endPos = {
+		x: 3.08,
+		y: 15.24,
+		z: -11.84,
+		targetX: 2.83,
+		targetY: 11.03,
+		targetZ: -11.89
+	};
+
+	// Start the tween animation
+	new TWEEN.Tween(startPos)
+		.to(endPos, 3000)
+		.easing(TWEEN.Easing.Quadratic.InOut)
+		.onUpdate(() => {
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+			controls.update();
+		})
+		.onComplete(() => {
+			console.log('Animation completed');
+
+			const navIconContainer = document.querySelector('.nav-icon-container');
+			const navIcon = document.getElementById('nav-icon');
+			navIconContainer.style.display = 'block';
+			navIcon.classList.remove('open'); // Start as X
+
+			setTimeout(() => {
+				navIconContainer.classList.add('visible');
+			}, 50);
+
+			// Show nav menu after a short delay
+			setTimeout(() => {
+				const nav = document.getElementById('nav');
+
+				nav.style.display = 'flex';
+				nav.classList.remove('visible');
+				nav.classList.remove('active');
+
+				// Animate nav items
+				const navItems = Array.from(document.querySelectorAll('.nav-item'));
+				navItems.forEach((item, i) => {
+					setTimeout(() => {
+						item.classList.add('visible');
+					}, 800 + (i * 200));
+				});
+			}, 500);
+
+			setTimeout(() => {
+				showGallery();
+			}, 500);
+		})
+		.start();
+}

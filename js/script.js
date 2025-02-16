@@ -1,3 +1,5 @@
+showGallery()
+
 document.addEventListener('DOMContentLoaded', () => {
 	const navIcon = document.getElementById('nav-icon');
 	const nav = document.getElementById('nav');
@@ -28,102 +30,46 @@ function displayBtn() {
 	btn.style.display = 'block';
 }
 
-function animateCamera() {
-	console.log('Animation started');
 
-	const button = document.getElementById('animateCamera');
-	button.style.display = 'none';
 
-	const startPos = {
-		x: camera.position.x,
-		y: camera.position.y,
-		z: camera.position.z,
-		targetX: controls.target.x,
-		targetY: controls.target.y,
-		targetZ: controls.target.z
-	};
-
-	const endPos = {
-		x: 48.76,
-		y: 65.56,
-		z: 56.23,
-		targetX: -57.31,
-		targetY: 12.14,
-		targetZ: -71.57
-	};
-
-	new TWEEN.Tween(startPos)
-		.to(endPos, 2000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
-
-			// Show nav icon as an X
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.add('open'); // Start as X
-
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
-
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.add('visible');
-				nav.classList.add('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						console.log('Animating item', i);
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-		})
-		.start();
-}
-
-function showGallery(){
+function showGallery() {
 	const popUp = document.createElement('div');
 	popUp.classList.add('popup');
 	popUp.innerHTML = `
         <div class="popup-content">
             <div class="bg">
                 <div class="pop-up">
-<div class="slider-container">
-    <div class="slider-wrapper">
-        <div class="slide previous-slide">
-            <img src="image3.jpg" alt="Previous Slide">
-        </div>
-        <div class="slider">
-            <div class="slide main-slide">
-                <img src="image1.jpg" alt="Image 1">
-            </div>
-            <div class="slide next-slide">
-                <img src="image2.jpg" alt="Next Slide">
-            </div>
-        </div>
-        <div class="slide next-slide">
-            <img src="image2.jpg" alt="Next Slide">
-        </div>
-    </div>
+				<div class="box">
+ 					<h1>Galerie</h1>
 
-    <div class="menu">
-        <button class="menu-button left">&lt;</button>
-        <button class="menu-button right">&gt;</button>
-    </div>
+                     <!-- Gallery Container -->
+                     <div class="gallery-container">
+                         <button id="prev">⬅</button>
+                         
+                         <div class="gallery">
+                             <img id="left-img" src="https://source.unsplash.com/random/200x150" alt="Side Image">
+                             <img id="main-img" src="https://source.unsplash.com/random/400x300" alt="Main Image">
+                             <img id="right-img" src="https://source.unsplash.com/random/200x150" alt="Side Image">
+                         </div>
+                 
+                         <button id="next">➡</button>
+                     </div>
+                 
+                     <!-- Footer with Social Links -->
+                     <div class="footer">
+                         <p>More on:</p>
+                         <div class="social-links">
+                             <a href="#">
+                                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest">
+                                 Pinterest
+                             </a>
+                             <a href="#">
+                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                                 Instagram
+                             </a>
+                         </div>
+                     </div>
+				</div>
 </div>
 
                 </div>
@@ -147,222 +93,39 @@ function showGallery(){
 }
 
 
-// Slider functionality
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide.main-slide, .slide.previous-slide, .slide.next-slide');
-const leftButton = document.querySelector('.menu-button.left');
-const rightButton = document.querySelector('.menu-button.right');
+const images = [
+	"https://source.unsplash.com/random/400x300?1",
+	"https://source.unsplash.com/random/400x300?2",
+	"https://source.unsplash.com/random/400x300?3",
+	"https://source.unsplash.com/random/400x300?4",
+	"https://source.unsplash.com/random/400x300?5"
+];
 
 let currentIndex = 0;
-const totalSlides = slides.length;
 
-function updateSlides() {
-    const previousIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    const nextIndex = (currentIndex + 1) % totalSlides;
-
-    slides[0].querySelector('img').src = slides[previousIndex].querySelector('img').src;
-    slides[1].querySelector('img').src = slides[currentIndex].querySelector('img').src;
-    slides[2].querySelector('img').src = slides[nextIndex].querySelector('img').src;
+function updateImages() {
+	document.getElementById("main-img").src = images[currentIndex];
+	document.getElementById("left-img").src = images[(currentIndex - 1 + images.length) % images.length];
+	document.getElementById("right-img").src = images[(currentIndex + 1) % images.length];
 }
 
-rightButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlides();
+document.getElementById("prev").addEventListener("click", () => {
+	currentIndex = (currentIndex - 1 + images.length) % images.length;
+	updateImages();
 });
 
-leftButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlides();
+document.getElementById("next").addEventListener("click", () => {
+	currentIndex = (currentIndex + 1) % images.length;
+	updateImages();
 });
 
-updateSlides();
+updateImages();
 
 
 
 
 
-function animateToAboutUs() {
-	console.log('Animation to Contacts started');
 
-	// Close the navigation menu first
-	const nav = document.getElementById('nav');
-	const navIconContainer = document.querySelector('.nav-icon-container');
-	const navIcon = document.getElementById('nav-icon');
-
-	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
-
-	const navItems = Array.from(document.querySelectorAll('.nav-item'));
-	navItems.forEach((item, i) => {
-		setTimeout(() => {
-			console.log('Hiding nav item', i);
-			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
-			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
-	});
-
-	setTimeout(() => {
-		console.log('Closing nav menu');
-		nav.classList.remove('visible', 'active');
-		nav.style.display = 'none';
-		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
-
-	// Define start and end positions
-	const startPos = {
-		x: camera.position.x,
-		y: camera.position.y,
-		z: camera.position.z,
-		targetX: controls.target.x,
-		targetY: controls.target.y,
-		targetZ: controls.target.z
-	};
-
-	const endPos = {
-		x: -26.05,
-		y: 47.78,
-		z: 4.98,
-		targetX: -61.66,
-		targetY: 44.77,
-		targetZ: 4.94
-	};
-
-	// Start the tween animation
-	new TWEEN.Tween(startPos)
-		.to(endPos, 3000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
-
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.remove('open'); // Start as X
-
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
-
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.remove('visible');
-				nav.classList.remove('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						console.log('Animating item', i);
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-
-			
-		})
-		.start();
-}
-
-function animateToContacts() {
-	console.log('Animation to Contacts started');
-
-	// Close the navigation menu first
-	const nav = document.getElementById('nav');
-	const navIconContainer = document.querySelector('.nav-icon-container');
-	const navIcon = document.getElementById('nav-icon');
-
-	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
-
-	const navItems = Array.from(document.querySelectorAll('.nav-item'));
-	navItems.forEach((item, i) => {
-		setTimeout(() => {
-			console.log('Hiding nav item', i);
-			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
-			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
-	});
-
-	setTimeout(() => {
-		console.log('Closing nav menu');
-		nav.classList.remove('visible', 'active');
-		nav.style.display = 'none';
-		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
-
-	// Define start and end positions
-	const startPos = {
-		x: camera.position.x,
-		y: camera.position.y,
-		z: camera.position.z,
-		targetX: controls.target.x,
-		targetY: controls.target.y,
-		targetZ: controls.target.z
-	};
-
-	const endPos = {
-		x: -49.83,
-		y: 18.92,
-		z: 47.35,
-		targetX: -59.07,
-		targetY: 17.05,
-		targetZ: 49.31
-	};
-
-	// Start the tween animation
-	new TWEEN.Tween(startPos)
-		.to(endPos, 3000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
-
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.remove('open'); // Start as X
-
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
-
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.remove('visible');
-				nav.classList.remove('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						console.log('Animating item', i);
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-
-			setTimeout(() => {
-				console.log('Showing pop-up...');
-				showPopUp();
-			}, 500);
-		})
-		.start();
-}
 
 function showPopUp() {
 	const popUp = document.createElement('div');
@@ -480,3 +243,7 @@ function showPopUp() {
 			});
 	});
 }
+
+
+
+
