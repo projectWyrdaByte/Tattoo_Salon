@@ -632,6 +632,8 @@ input::-webkit-inner-spin-button {
         height: 0;
         opacity: 0;
         scale: 0;
+        top: 50%;
+        left: 50%;
     }
 
     100% {
@@ -644,34 +646,40 @@ input::-webkit-inner-spin-button {
     }
 }
 
-.popup.closed {
-    opacity: 0;
-    transform: scale(0.5);
-    /* Make the pop-up shrink */
-    pointer-events: none;
-    /* Disable interaction when closed */
+@keyframes removeCircle {
+    100% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        scale: 0;
+        top: 50%;
+        left: 50%;
+    }
+
+    0% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        scale: 1;
+        top: 0;
+        left: 0;
+    }
 }
 
-/* Example to show and hide the pop-up */
+.popup.closed {
+    opacity: 0;
+    pointer-events: none;
+    animation: removeCircle 0.6s ease-in-out forwards;
+}
+
 .popup.show {
     opacity: 1;
     transform: scale(1);
-    /* Pop-up at full scale */
 }
 
 .popup.hide {
     opacity: 0;
-    transform: scale(0.5);
-    /* Shrink when hiding */
     pointer-events: none;
-    /* Disable interaction when hidden */
-}
-
-.popup-content {
-    padding: 20px;
-    width: 100%;
-    border-radius: 10px;
-    position: relative;
 }
 
 .close-popup {
@@ -688,48 +696,6 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-.dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #3498db;
-    position: absolute;
-    animation: pulse 1s infinite;
-}
-
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.5);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes popupAnimation {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(0);
-    }
-
-    100% {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1);
-    }
-}
-
-/* Trigger the popup to appear */
-.dot:active+.popup {
-    animation: popupAnimation 1s forwards;
-}
 
 
 
@@ -759,53 +725,58 @@ input::-webkit-inner-spin-button {
 
 
 
-.box{
+.box {
     display: flex;
     flex-direction: column;
-    width: 100%;
-
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 48px;
     font-weight: bold;
     color: #444;
-    margin-bottom: 20px;
 }
 
 .footer {
     width: 100%;
-    border-top: 1px solid #ccc;
+    border-top: 2px solid #aaaaaa;
+    border-width: 50%;
     margin-top: 30px;
-    padding-top: 20px;
+    padding-top: 30px;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly; /* Ensures equal spacing */
+    align-items: center; /* Aligns elements vertically */
 }
 
 .footer p {
-    font-size: 18px;
+    font-size: 32px;
     font-weight: bold;
     color: #444;
+    margin: 0;
 }
 
 .social-links {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 32px;
     color: #444;
     font-weight: bold;
 }
 
 .social-links img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     margin-right: 5px;
 }
 
@@ -813,8 +784,9 @@ h1 {
 
 .carousel-container {
     position: relative;
-    width: 60vw;
-    height: 50vh;
+    width: 54vw;
+    height: 30vh;
+    margin-bottom: 10vh;
 }
 
 .carousel {
@@ -824,6 +796,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .carousel .slide {
@@ -832,8 +805,8 @@ h1 {
 }
 
 .carousel img {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 225px;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.5s;
@@ -851,43 +824,116 @@ h1 {
 }
 
 .prev {
-    transform: translateX(-150px) scale(0.9);
+    transform: translateX(-365px) scale(0.8);
 }
 
 .next {
-    transform: translateX(150px) scale(0.9);
-}
-
-.hidden {
-    opacity: 0;
+    transform: translateX(365px) scale(0.8);
 }
 
 
-.controls button {
-    background: white;
+
+.box button {
     border: none;
-    padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-    margin: 0 10px;
     border-radius: 5px;
-    transition: background 0.3s;
+    background-color: transparent;
 }
 
-.controls button:hover {
-    background: #ccc;
+.box button img{
+    width: 50px;
+    height: 50px;
 }
 
 #prev {
     position: absolute;
-    left: -30px;
-    top: 50%;
+    top: 40%;
+    left: 0;
     z-index: 10;
+}
+
+#prev img {
+    transform: rotate(180deg);
 }
 
 #next {
     position: absolute;
-    right: -30px;
-    top: 50%;
+    top: 40%;
+    right: 0;
     z-index: 10;
+}
+
+
+
+
+
+
+
+
+
+.abtUs {
+    width: 60vw;
+}
+
+.radio-group {
+    display: flex;
+    border: 2px solid #007bff;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.radio-group label{
+    width: 100%;
+    border-right: 2px solid #007bff;
+}
+
+.radio-button {
+    cursor: pointer;
+    align-items: center;
+    background-color: white;
+    transition: background-color 0.3s;
+    flex-grow: 1; /* This ensures each radio button takes equal space */
+    justify-content: center; /* Center the content of the button */
+    text-align: center; /* Align text in the center */
+    padding: 10px 0; /* Adjust padding as needed */
+}
+
+.radio-group label:last-child {
+    border-right: 0;
+}
+
+.radio-input {
+    display: none;
+    width: 100%;
+}
+
+.radio-input:checked + .radio-button {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.info{
+    margin-top: 20px;
+}
+
+.data{
+    display: flex;
+}
+
+.person-image{
+    height: 30vh;
+    margin-right: 20px;
+}
+
+.projects{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project{
+    width: 12vw;
 }

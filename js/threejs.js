@@ -22,16 +22,23 @@ const directionalLight2 = new THREE.DirectionalLight(0xffffff, 4);
 directionalLight2.position.set(-121, 128, -138);
 scene.add(directionalLight2);
 
+
+
+
+
     // GLTF Model Loader
     const loader = new THREE.GLTFLoader();
-    loader.load('./tattoo/idk.glb', function (gltf) {
+    loader.load('./tattoo/idk_1.glb', function (gltf) {
         const model = gltf.scene;
         model.scale.set(2, 2, 2);
         model.position.set(0, -1, 0);
         scene.add(model);
+
     }, undefined, function (error) {
         console.error('An error occurred:', error);
     });
+
+
 
 const dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/libs/draco/');
@@ -210,10 +217,8 @@ function animateToAboutUs() {
 
 	// Close the navigation menu first
 	const nav = document.getElementById('nav');
-	const navIconContainer = document.querySelector('.nav-icon-container');
 	const navIcon = document.getElementById('nav-icon');
 
-	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
 
 	const navItems = Array.from(document.querySelectorAll('.nav-item'));
 	navItems.forEach((item, i) => {
@@ -290,6 +295,9 @@ function animateToAboutUs() {
 				});
 			}, 500);
 
+			setTimeout(() => {
+				showAboutUs();
+			}, 500);
 			
 		})
 		.start();
@@ -471,3 +479,4 @@ function animateToGallery() {
 		})
 		.start();
 }
+
