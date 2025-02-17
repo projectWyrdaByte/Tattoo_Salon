@@ -139,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function animateCamera() {
-	console.log('Animation started');
 
 	const button = document.getElementById('animateCamera');
 	button.style.display = 'none';

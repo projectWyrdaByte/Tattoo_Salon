@@ -1,4 +1,3 @@
-showGallery()
 
 document.addEventListener('DOMContentLoaded', () => {
 	const navIcon = document.getElementById('nav-icon');
@@ -42,18 +41,28 @@ function showGallery() {
 				<div class="box">
  					<h1>Galerie</h1>
 
-                     <!-- Gallery Container -->
-                     <div class="gallery-container">
-                         <button id="prev">⬅</button>
-                         
-                         <div class="gallery">
-                             <img id="left-img" src="https://source.unsplash.com/random/200x150" alt="Side Image">
-                             <img id="main-img" src="https://source.unsplash.com/random/400x300" alt="Main Image">
-                             <img id="right-img" src="https://source.unsplash.com/random/200x150" alt="Side Image">
-                         </div>
-                 
-                         <button id="next">➡</button>
-                     </div>
+                    <div class="carousel-container">
+        				<div id="carousel" class="carousel">
+            <button id="prev">&#9665;</button>
+
+            <div class="slide">
+                <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+			</div>
+            <div class="prev slide">
+                <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg">
+            </div>
+            <div class="selected slide">
+                <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg">
+            </div>
+            <div class="next slide">
+                <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+			</div>
+        </div>
+            <button id="next">&#9655;</button>
+    </div>
                  
                      <!-- Footer with Social Links -->
                      <div class="footer">
@@ -92,34 +101,33 @@ function showGallery() {
 
 }
 
+function moveToSelected(direction) {
+	var selected = document.querySelector(".selected");
+	var prev = selected.previousElementSibling;
+	var next = selected.nextElementSibling;
 
-const images = [
-	"https://source.unsplash.com/random/400x300?1",
-	"https://source.unsplash.com/random/400x300?2",
-	"https://source.unsplash.com/random/400x300?3",
-	"https://source.unsplash.com/random/400x300?4",
-	"https://source.unsplash.com/random/400x300?5"
-];
-
-let currentIndex = 0;
-
-function updateImages() {
-	document.getElementById("main-img").src = images[currentIndex];
-	document.getElementById("left-img").src = images[(currentIndex - 1 + images.length) % images.length];
-	document.getElementById("right-img").src = images[(currentIndex + 1) % images.length];
+	if (direction === "next" && next) {
+		selected.classList.remove("selected");
+		selected.classList.add("prev");
+		next.classList.remove("next");
+		next.classList.add("selected");
+		if (prev) prev.classList.remove("prev");
+		if (next.nextElementSibling) next.nextElementSibling.classList.add("next");
+	} else if (direction === "prev" && prev) {
+		selected.classList.remove("selected");
+		selected.classList.add("next");
+		prev.classList.remove("prev");
+		prev.classList.add("selected");
+		if (next) next.classList.remove("next");
+		if (prev.previousElementSibling) prev.previousElementSibling.classList.add("prev");
+	}
 }
 
-document.getElementById("prev").addEventListener("click", () => {
-	currentIndex = (currentIndex - 1 + images.length) % images.length;
-	updateImages();
-});
+document.getElementById("prev").addEventListener("click", () => moveToSelected("prev"));
+document.getElementById("next").addEventListener("click", () => moveToSelected("next"));
 
-document.getElementById("next").addEventListener("click", () => {
-	currentIndex = (currentIndex + 1) % images.length;
-	updateImages();
-});
 
-updateImages();
+
 
 
 
