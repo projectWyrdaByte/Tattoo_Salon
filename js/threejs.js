@@ -53,7 +53,7 @@ controls.dampingFactor = 0.25;
 setTimeout(() => {
     camera.position.set(-28.98, 41.87, -38.49);
     camera.lookAt(-61.11, 40.11, -37.76);
-    controls.target.set(-61.09, 44.08, -36.57);
+    controls.target.set(-61.11, 40.11, -37.76);
 
     camera.updateProjectionMatrix();
     controls.update();
