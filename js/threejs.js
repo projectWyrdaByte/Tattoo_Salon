@@ -51,9 +51,9 @@ controls.dampingFactor = 0.25;
 
 // Force initial position after a slight delay
 setTimeout(() => {
-    camera.position.set(-40.37, 41.73, -36.98);
-    camera.lookAt(-59.72, 40.26, -36.67);
-    controls.target.set(-59.72, 40.26, -36.67);
+    camera.position.set(-28.98, 41.87, -38.49);
+    camera.lookAt(-61.11, 40.11, -37.76);
+    controls.target.set(-61.09, 44.08, -36.57);
 
     camera.updateProjectionMatrix();
     controls.update();
