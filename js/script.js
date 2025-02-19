@@ -273,7 +273,7 @@ function showPopUp() {
                             <div>
                                 <div class="subtitle">Vizitează-ne</div>
                                 <div>
-                                    <div class="text">bd. Alexandru cel Bun <br/> or. Ialoveni, R. Moldova</div>
+                                    <a href="https://maps.app.goo.gl/PimnCLwfDJouARXq8" target="_blank" class="address"><div class="text">bd. Alexandru cel Bun <br/> or. Ialoveni, R. Moldova</div></a>
                                 </div>
                             </div>
                             <div>

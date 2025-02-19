@@ -79,6 +79,11 @@ a{
     color: black;
 }
 
+.address{
+    text-decoration: none;
+    color:white
+}
+
 /* Nav */
 .nav {
     display: flex;
