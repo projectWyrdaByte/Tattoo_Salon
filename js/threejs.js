@@ -48,9 +48,9 @@ controls.dampingFactor = 0.25;
 
 // Force initial position after a slight delay
 setTimeout(() => {
-    camera.position.set(-28.98, 41.87, -38.49);
-    camera.lookAt(-61.11, 40.11, -37.76);
-    controls.target.set(-61.11, 40.11, -37.76);
+    camera.position.set(-37.08, 40.97, -36.26);
+    camera.lookAt(-60.97, 41.54, -34.94);
+    controls.target.set(-60.97, 41.54, -34.94);
 
     camera.updateProjectionMatrix();
     controls.update();
@@ -423,9 +423,9 @@ function animateToGallery() {
 	};
 
 	const endPos = {
-		x: 3.08,
-		y: 15.24,
-		z: -11.84,
+		x: 2.98,
+		y: 16.77,
+		z: -11.86,
 		targetX: 2.83,
 		targetY: 11.03,
 		targetZ: -11.89
