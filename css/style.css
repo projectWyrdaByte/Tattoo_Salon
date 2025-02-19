@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @font-face {
     font-family: "Valhalica";
-    src: url("/tattoo/Valhalica-Regular.ttf");
+    src: url("/tattoo/Valhalica-Regular.otf");
 }
 
 
@@ -29,14 +29,27 @@ canvas {
     height: 100vh;
 }
 
-.footer-main {
+.footer{
     position: fixed;
-    bottom: -10px;
+    bottom: 0px;
     width: 100%;
     font-size: 14px;
     color: rgb(48, 48, 48);
-    padding-top: 10px;
+    background-color: #d6e1eb;
     text-align: center;
+    z-index: 100;
+    padding-top: 4px;
+}
+
+.footer-main{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer-img{
+    width: 20px;
 }
 
 /* Camera Position Display */
@@ -57,7 +70,7 @@ canvas {
 .next-button {
     position: fixed;
     right: 0;
-    bottom: 0;
+    bottom: 20px;
     cursor: pointer;
     border: 0;
     background-color: transparent;
@@ -787,142 +800,6 @@ input::-webkit-inner-spin-button {
     align-items: center;
     height: 70vh;
 }
-
-h1 {
-    font-size: 48px;
-    font-weight: bold;
-    color: #444;
-}
- 
-.footer {
-    width: 100%;
-    border-top: 2px solid #aaaaaa;
-    border-width: 50%;
-    margin-top: 30px;
-    padding-top: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    /* Ensures equal spacing */
-    align-items: center;
-    /* Aligns elements vertically */
-}
-
-.footer p {
-    font-size: 32px;
-    font-weight: bold;
-    color: #444;
-    margin: 0;
-}
-
-.social-links {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-size: 32px;
-    color: #444;
-    font-weight: bold;
-}
-
-.social-links img {
-    width: 32px;
-    height: 32px;
-    margin-right: 5px;
-}
-
-
-
-.carousel-container {
-    position: relative;
-    width: 54vw;
-    height: 30vh;
-    margin-bottom: 10vh;
-}
-
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.carousel .slide {
-    position: absolute;
-    transition: transform 0.5s, opacity 0.5s;
-}
-
-.carousel img {
-    width: 350px;
-    height: 225px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.5s;
-}
-
-.selected {
-    z-index: 3;
-    transform: scale(1.2);
-}
-
-.prev,
-.next {
-    opacity: 0.5;
-    z-index: 2;
-}
-
-.prev {
-    transform: translateX(-365px) scale(0.8);
-}
-
-.next {
-    transform: translateX(365px) scale(0.8);
-}
-
-
-
-#prev,
-#next {
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: transparent;
-}
-
-#prev img,
-#next img {
-    width: 50px;
-    height: 50px;
-}
-
-#prev {
-    position: absolute;
-    top: 40%;
-    left: 0;
-    z-index: 10;
-}
-
-#prev img {
-    transform: rotate(180deg);
-}
-
-#next {
-    position: absolute;
-    top: 40%;
-    right: 0;
-    z-index: 10;
-}
-
-
 
 
 

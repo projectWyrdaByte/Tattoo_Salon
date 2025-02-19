@@ -22,24 +22,17 @@ const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight2.position.set(-121, 128, -138);
 scene.add(directionalLight2);
 
+// GLTF Model Loader
+const loader = new THREE.GLTFLoader();
+loader.load('./tattoo/idk_1-v2-v3.glb', function (gltf) {
+	const model = gltf.scene;
+	model.scale.set(2, 2, 2);
+	model.position.set(0, -1, 0);
+	scene.add(model);
 
-
-
-
-    // GLTF Model Loader
-    const loader = new THREE.GLTFLoader();
-    loader.load('./tattoo/idk_1-v2-v3.glb', function (gltf) {
-        const model = gltf.scene;
-        model.scale.set(2, 2, 2);
-        model.position.set(0, -1, 0);
-        scene.add(model);
-
-    }, undefined, function (error) {
-        console.error('An error occurred:', error);
-    });
-
-
-
+}, undefined, function (error) {
+	console.error('An error occurred:', error);
+});
 
 // OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -48,12 +41,12 @@ controls.dampingFactor = 0.25;
 
 // Force initial position after a slight delay
 setTimeout(() => {
-    camera.position.set(-37.08, 40.97, -36.26);
-    camera.lookAt(-60.97, 41.54, -34.94);
-    controls.target.set(-60.97, 41.54, -34.94);
+	camera.position.set(-37.08, 40.97, -36.26);
+	camera.lookAt(-60.97, 41.54, -34.94);
+	controls.target.set(-60.97, 41.54, -34.94);
 
-    camera.updateProjectionMatrix();
-    controls.update();
+	camera.updateProjectionMatrix();
+	controls.update();
 }, 100);
 
 // Display the camera position
@@ -61,86 +54,37 @@ const cameraPositionDiv = document.getElementById('cameraPosition');
 
 // Animate the scene
 function animate() {
-    requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 
-    // Update TWEEN
-    TWEEN.update();
+	// Update TWEEN
+	TWEEN.update();
 
-    // Update the camera position display
-    cameraPositionDiv.innerHTML = `
+	// Update the camera position display
+	cameraPositionDiv.innerHTML = `
             Camera Position: 
             X: ${camera.position.x.toFixed(2)}, 
             Y: ${camera.position.y.toFixed(2)}, 
             Z: ${camera.position.z.toFixed(2)}
         `;
 
-    controls.update();
-    renderer.render(scene, camera);
+	controls.update();
+	renderer.render(scene, camera);
 }
 
 animate();
 
-// Camera animation function
-function animateCamera() {
-    console.log('Animation started'); // Debug log
-
-    if (typeof TWEEN === 'undefined') {
-        console.error('TWEEN is not loaded!');
-        return;
-    }
-
-    // Starting position and target
-    const startPos = {
-        x: camera.position.x,
-        y: camera.position.y,
-        z: camera.position.z,
-        targetX: controls.target.x,
-        targetY: controls.target.y,
-        targetZ: controls.target.z
-    };
-
-    // Ending position and target
-    const endPos = {
-        x: 48.76,
-        y: 65.56,
-        z: 56.23,
-        targetX: -57.31,
-        targetY: 12.14,
-        targetZ: -71.57
-    };
-
-    // Create the tween
-    new TWEEN.Tween(startPos)
-        .to(endPos, 2000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .onUpdate(() => {
-            camera.position.set(startPos.x, startPos.y, startPos.z);
-            controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-            camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-            controls.update();
-        })
-        .onComplete(() => {
-            console.log('Animation completed');
-        })
-        .start();
-
-    const button = document.getElementById('animateCamera');
-    button.style.display = 'none';
-}
-
 // Make sure the button is properly added and event listener is working
 document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('animateCamera');
-    if (button) {
-        button.addEventListener('click', () => {
-            console.log('Button clicked'); // Debug log
-            animateCamera();
-        });
-    } else {
-        console.error('Button not found!'); // Debug log
-    }
+	const button = document.getElementById('animateCamera');
+	if (button) {
+		button.addEventListener('click', () => {
+			console.log('Button clicked'); // Debug log
+			animateCamera();
+		});
+	} else {
+		console.error('Button not found!'); // Debug log
+	}
 });
-
 
 function animateCamera() {
 
@@ -208,30 +152,8 @@ function animateCamera() {
 		.start();
 }
 
-
 function animateToAboutUs() {
 	console.log('Animation to Contacts started');
-
-	// Close the navigation menu first
-	const nav = document.getElementById('nav');
-	const navIcon = document.getElementById('nav-icon');
-
-
-	const navItems = Array.from(document.querySelectorAll('.nav-item'));
-	navItems.forEach((item, i) => {
-		setTimeout(() => {
-			console.log('Hiding nav item', i);
-			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
-			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
-	});
-
-	setTimeout(() => {
-		console.log('Closing nav menu');
-		nav.classList.remove('visible', 'active');
-		nav.style.display = 'none';
-		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
 
 	// Define start and end positions
 	const startPos = {
@@ -252,53 +174,41 @@ function animateToAboutUs() {
 		targetZ: 8
 	};
 
-	// Start the tween animation
-	new TWEEN.Tween(startPos)
-		.to(endPos, 3000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
+	let cameraPositionX = camera.position.x.toFixed(2);
+	let cameraPositionY = camera.position.y.toFixed(2);
+	let cameraPositionZ = camera.position.z.toFixed(2);
+	let targetPositionX = controls.target.x.toFixed(2);
+	let targetPositionY = controls.target.y.toFixed(2);
+	let targetPositionZ = controls.target.z.toFixed(2);
 
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.remove('open'); // Start as X
+	const isCameraInFinalPosition = (cameraPositionX == endPos.x) && (cameraPositionY == endPos.y) && (cameraPositionZ == endPos.z) &&
+		(targetPositionX == endPos.targetX) && (targetPositionY == endPos.targetY) && (targetPositionZ == endPos.targetZ);
 
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
+	if (isCameraInFinalPosition) {
+		console.log('Camera is already in the final position');
+		showAboutUs();
+	} else {
+		closeNavMenu(() => {
+			new TWEEN.Tween(startPos)
+				.to(endPos, 3000)
+				.easing(TWEEN.Easing.Quadratic.InOut)
+				.onUpdate(() => {
+					camera.position.set(startPos.x, startPos.y, startPos.z);
+					controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+					camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+					controls.update();
+				})
+				.onComplete(() => {
+					console.log('Animation completed');
 
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.remove('visible');
-				nav.classList.remove('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						console.log('Animating item', i);
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-
-			setTimeout(() => {
-				showAboutUs();
-			}, 500);
-			
-		})
-		.start();
+					showAboutUs();
+				})
+				.start();
+		});
+	}
 }
+
+
 
 function animateToContacts() {
 
@@ -342,52 +252,38 @@ function animateToContacts() {
 		targetZ: 49.31
 	};
 
-	// Start the tween animation
-	new TWEEN.Tween(startPos)
-		.to(endPos, 3000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
+	let cameraPositionX = camera.position.x.toFixed(2);
+	let cameraPositionY = camera.position.y.toFixed(2);
+	let cameraPositionZ = camera.position.z.toFixed(2);
+	let targetPositionX = controls.target.x.toFixed(2);
+	let targetPositionY = controls.target.y.toFixed(2);
+	let targetPositionZ = controls.target.z.toFixed(2);
 
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.remove('open'); // Start as X
+	const isCameraInFinalPosition = (cameraPositionX == endPos.x) && (cameraPositionY == endPos.y) && (cameraPositionZ == endPos.z) &&
+		(targetPositionX == endPos.targetX) && (targetPositionY == endPos.targetY) && (targetPositionZ == endPos.targetZ);
 
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
-
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.remove('visible');
-				nav.classList.remove('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-
-			setTimeout(() => {
-				showPopUp();
-			}, 500);
-		})
-		.start();
+	if (isCameraInFinalPosition) {
+		console.log('Camera is already in the final position');
+		showPopUp();
+	} else {
+		closeNavMenu(() => {
+			new TWEEN.Tween(startPos)
+				.to(endPos, 3000)
+				.easing(TWEEN.Easing.Quadratic.InOut)
+				.onUpdate(() => {
+					camera.position.set(startPos.x, startPos.y, startPos.z);
+					controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+					camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+					controls.update();
+				})
+				.onComplete(() => {
+					console.log('Animation completed');
+					showPopUp();
+				})
+				.start();
+		});
+	}
 }
-
 
 function animateToGallery() {
 
@@ -430,50 +326,84 @@ function animateToGallery() {
 		targetY: 11.03,
 		targetZ: -11.89
 	};
+	let cameraPositionX = camera.position.x.toFixed(2);
+	let cameraPositionY = camera.position.y.toFixed(2);
+	let cameraPositionZ = camera.position.z.toFixed(2);
+	let targetPositionX = controls.target.x.toFixed(2);
+	let targetPositionY = controls.target.y.toFixed(2);
+	let targetPositionZ = controls.target.z.toFixed(2);
 
-	// Start the tween animation
-	new TWEEN.Tween(startPos)
-		.to(endPos, 3000)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.onUpdate(() => {
-			camera.position.set(startPos.x, startPos.y, startPos.z);
-			controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
-			camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
-			controls.update();
-		})
-		.onComplete(() => {
-			console.log('Animation completed');
+	const isCameraInFinalPosition = (cameraPositionX == endPos.x) && (cameraPositionY == endPos.y) && (cameraPositionZ == endPos.z) &&
+		(targetPositionX == endPos.targetX) && (targetPositionY == endPos.targetY) && (targetPositionZ == endPos.targetZ);
 
-			const navIconContainer = document.querySelector('.nav-icon-container');
-			const navIcon = document.getElementById('nav-icon');
-			navIconContainer.style.display = 'block';
-			navIcon.classList.remove('open'); // Start as X
-
-			setTimeout(() => {
-				navIconContainer.classList.add('visible');
-			}, 50);
-
-			// Show nav menu after a short delay
-			setTimeout(() => {
-				const nav = document.getElementById('nav');
-
-				nav.style.display = 'flex';
-				nav.classList.remove('visible');
-				nav.classList.remove('active');
-
-				// Animate nav items
-				const navItems = Array.from(document.querySelectorAll('.nav-item'));
-				navItems.forEach((item, i) => {
-					setTimeout(() => {
-						item.classList.add('visible');
-					}, 800 + (i * 200));
-				});
-			}, 500);
-
-			setTimeout(() => {
-				showGallery();
-			}, 500);
-		})
-		.start();
+	if (isCameraInFinalPosition) {
+		console.log('Camera is already in the final position');
+		showGallery();
+	} else {
+		closeNavMenu(() => {
+			new TWEEN.Tween(startPos)
+				.to(endPos, 3000)
+				.easing(TWEEN.Easing.Quadratic.InOut)
+				.onUpdate(() => {
+					camera.position.set(startPos.x, startPos.y, startPos.z);
+					controls.target.set(startPos.targetX, startPos.targetY, startPos.targetZ);
+					camera.lookAt(startPos.targetX, startPos.targetY, startPos.targetZ);
+					controls.update();
+				})
+				.onComplete(() => {
+					console.log('Animation completed');
+					showGallery();
+				})
+				.start();
+		});
+	}
 }
 
+function showNavIconAndMenu() {
+	const navIconContainer = document.querySelector('.nav-icon-container');
+	const navIcon = document.getElementById('nav-icon');
+	navIconContainer.style.display = 'block';
+	navIcon.classList.add('open'); // Start as X
+
+	setTimeout(() => {
+		navIconContainer.classList.add('visible');
+	}, 50);
+
+	// Show nav menu after a short delay
+	setTimeout(() => {
+		const nav = document.getElementById('nav');
+
+		nav.style.display = 'flex';
+		nav.classList.add('visible');
+		nav.classList.add('active');
+
+		// Animate nav items
+		const navItems = Array.from(document.querySelectorAll('.nav-item'));
+		navItems.forEach((item, i) => {
+			setTimeout(() => {
+				console.log('Animating item', i);
+				item.classList.add('visible');
+			}, 800 + (i * 200));
+		});
+	}, 500);
+}
+
+function closeNavMenu(callback) {
+	const nav = document.getElementById('nav');
+	const navIcon = document.getElementById('nav-icon');
+
+	const navItems = Array.from(document.querySelectorAll('.nav-item'));
+	navItems.forEach((item, i) => {
+		setTimeout(() => {
+			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
+			item.classList.remove('visible');
+		}, i * 200); // Delay each item by 200ms
+	});
+
+	setTimeout(() => {
+		nav.classList.remove('visible', 'active');
+		nav.style.display = 'none';
+		navIcon.classList.remove('open');
+		callback();
+	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+}

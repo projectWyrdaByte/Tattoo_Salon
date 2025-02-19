@@ -245,6 +245,8 @@ function showGallery() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
+					showNavIconAndMenu();
+
     }, 500); // Time to wait before removing element
   });
 
@@ -268,7 +270,7 @@ function showPopUp() {
             <div class="bg">
                 <div class="pop-up-contact">
                     <div class="box1">
-                        <div class="title">Get in touch</div>
+                        <div class="title">Contactează-ne</div>
                         <div class="info">
                             <div>
                                 <div class="subtitle">Vizitează-ne</div>
@@ -306,7 +308,7 @@ function showPopUp() {
 
                     <!-- Form -->
                     <div class="box2">
-                        <div class="title">Programeazâ-te</div>
+                        <div class="title">Programează-te</div>
                         <form id="contact-form">
                             <div class="firstname">
                                 <div class="form_text">Prenume</div>
@@ -353,6 +355,8 @@ function showPopUp() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
+					showNavIconAndMenu();
+
     }, 500); // Time to wait before removing element
   });
 
@@ -443,6 +447,8 @@ function showAboutUs() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
+					showNavIconAndMenu();
+
     }, 500); // Time to wait before removing element
   });
 
