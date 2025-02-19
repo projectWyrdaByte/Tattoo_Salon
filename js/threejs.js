@@ -18,7 +18,7 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 6);
 directionalLight.position.set(5, 10, 4);
 scene.add(directionalLight);
 
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, 4);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight2.position.set(-121, 128, -138);
 scene.add(directionalLight2);
 
@@ -40,9 +40,6 @@ scene.add(directionalLight2);
 
 
 
-const dracoLoader = new THREE.DRACOLoader();
-dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/libs/draco/');
-loader.setDRACOLoader(dracoLoader);
 
 // OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -247,12 +244,12 @@ function animateToAboutUs() {
 	};
 
 	const endPos = {
-		x: -26.05,
-		y: 47.78,
-		z: 4.98,
-		targetX: -61.66,
-		targetY: 44.77,
-		targetZ: 4.94
+		x: -33.9,
+		y: 43.77,
+		z: 7.38,
+		targetX: -61.76,
+		targetY: 44.02,
+		targetZ: 8
 	};
 
 	// Start the tween animation
