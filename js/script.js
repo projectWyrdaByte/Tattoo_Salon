@@ -1,41 +1,41 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-	const navIcon = document.getElementById('nav-icon');
-	const nav = document.getElementById('nav');
+  const navIcon = document.getElementById('nav-icon');
+  const nav = document.getElementById('nav');
 
-	navIcon.addEventListener('click', () => {
-		console.log('Before toggle - Nav Icon Open:', navIcon.classList.contains('open'));
-		console.log('Before toggle - Nav Active:', nav.classList.contains('active'));
+  navIcon.addEventListener('click', () => {
+    console.log('Before toggle - Nav Icon Open:', navIcon.classList.contains('open'));
+    console.log('Before toggle - Nav Active:', nav.classList.contains('active'));
 
-		navIcon.classList.toggle('open');
-		nav.classList.toggle('active');
+    navIcon.classList.toggle('open');
+    nav.classList.toggle('active');
 
-		console.log('After toggle - Nav Icon Open:', navIcon.classList.contains('open'));
-		console.log('After toggle - Nav Active:', nav.classList.contains('active'));
-	});
+    console.log('After toggle - Nav Icon Open:', navIcon.classList.contains('open'));
+    console.log('After toggle - Nav Active:', nav.classList.contains('active'));
+  });
 
-	displayNav();
-	displayBtn();
+  displayNav();
+  displayBtn();
 });
 
 
 function displayNav() {
-	const nav = document.getElementById('nav');
-	nav.style.display = 'flex';
+  const nav = document.getElementById('nav');
+  nav.style.display = 'flex';
 }
 
 function displayBtn() {
-	const btn = document.getElementById('animateCamera');
-	btn.style.display = 'block';
+  const btn = document.getElementById('animateCamera');
+  btn.style.display = 'block';
 }
 
 
 
 function showGallery() {
-	const popUp = document.createElement('div');
-	popUp.classList.add('popup');
-	popUp.innerHTML = `
+  const popUp = document.createElement('div');
+  popUp.classList.add('popup');
+  popUp.innerHTML = `
         <div class="popup-content">
             <div class="bg">
                 <div class="pop-up"> 
@@ -61,7 +61,7 @@ function showGallery() {
           </div>
           <div class="profile-info">
             <div class="title row">
-              <h2>_untamed_ink_</h2>
+              <a href="https://www.instagram.com/_untamed_ink_/" class="ig-name"><h2>_untamed_ink_</h2></a>
               <span class="verfied-icon"></span>
               <button class="btn-primary">Follow</button>
             </div>
@@ -74,11 +74,9 @@ function showGallery() {
                 </ul>
               </div>
               <div class="descriptions row last">
-                <span>
-                  Everyone has a story to tell.
-                  <br />
-                  Tag <a>#ShotoniPhone</a> to take part.
-                </span>
+                Wear your story inked <br />
+                Wear it with pride <br />
+                untamedink.vercel.app 
               </div>
             </div>
           </div>
@@ -236,19 +234,19 @@ function showGallery() {
 
         </div>
 	`
-		;
+    ;
 
-	// Append the pop-up to the body
-	document.body.appendChild(popUp);
+  // Append the pop-up to the body
+  document.body.appendChild(popUp);
 
-	// Close button functionality
-	const closeButton = popUp.querySelector('.close-popup');
-	closeButton.addEventListener('click', () => {
-		popUp.classList.add('closed'); // This triggers the closing animation
-		setTimeout(() => {
-			popUp.remove(); // Remove the pop-up after animation
-		}, 500); // Time to wait before removing element
-	});
+  // Close button functionality
+  const closeButton = popUp.querySelector('.close-popup');
+  closeButton.addEventListener('click', () => {
+    popUp.classList.add('closed'); // This triggers the closing animation
+    setTimeout(() => {
+      popUp.remove(); // Remove the pop-up after animation
+    }, 500); // Time to wait before removing element
+  });
 
 
 
@@ -263,9 +261,9 @@ function showGallery() {
 
 
 function showPopUp() {
-	const popUp = document.createElement('div');
-	popUp.classList.add('popup');
-	popUp.innerHTML = `
+  const popUp = document.createElement('div');
+  popUp.classList.add('popup');
+  popUp.innerHTML = `
         <div class="popup-content">
             <div class="bg">
                 <div class="pop-up-contact">
@@ -288,7 +286,7 @@ function showPopUp() {
                             <div>
                                 <div class="subtitle">Sună la</div>
                                 <div>
-                                    <div class="text">060 000 000</div>
+                                    <div class="text">079 992 446</div>
                                     <div class="text">Luni-Vineri: 09:00-18:00</div>
                                 </div>
                             </div>
@@ -344,71 +342,71 @@ function showPopUp() {
             </div>
         </div>
 	<button class="close-popup">&#10006;</button>`
-		;
+    ;
 
-	// Append the pop-up to the body
-	document.body.appendChild(popUp);
+  // Append the pop-up to the body
+  document.body.appendChild(popUp);
 
-	// Close button functionality
-	const closeButton = popUp.querySelector('.close-popup');
-	closeButton.addEventListener('click', () => {
-		popUp.classList.add('closed'); // This triggers the closing animation
-		setTimeout(() => {
-			popUp.remove(); // Remove the pop-up after animation
-		}, 500); // Time to wait before removing element
-	});
+  // Close button functionality
+  const closeButton = popUp.querySelector('.close-popup');
+  closeButton.addEventListener('click', () => {
+    popUp.classList.add('closed'); // This triggers the closing animation
+    setTimeout(() => {
+      popUp.remove(); // Remove the pop-up after animation
+    }, 500); // Time to wait before removing element
+  });
 
-	// EmailJS Connection
-	const form = popUp.querySelector('#contact-form');
+  // EmailJS Connection
+  const form = popUp.querySelector('#contact-form');
 
-	emailjs.init("I3DnisvYrfkPlxjpy");
+  emailjs.init("I3DnisvYrfkPlxjpy");
 
-	form.addEventListener('submit', function (event) {
-		event.preventDefault();
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-		emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
-			.then(function (response) {
-				console.log('SUCCESS!', response.status, response.text);
-				alert('Your message has been sent!');
-			}, function (error) {
-				console.error('FAILED...', error);
-				alert('Failed to send the message.');
-			});
-	});
+    emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
+      .then(function (response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Your message has been sent!');
+      }, function (error) {
+        console.error('FAILED...', error);
+        alert('Failed to send the message.');
+      });
+  });
 }
 
 // Make sure 'images' is declared and initialized at the beginning of the script
 const images = {
-	"person1": {
-		"name": "Mihai",
-		"age": 25,
-		"loves": "Music",
-		"specializes": "tattoos",
-		"image": "/images/artist_1.jpg",
-		"projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
-	},
-	"person2": {
-		"name": "Ana",
-		"age": 23,
-		"loves": "Art",
-		"specializes": "piercings",
-		"image": "/images/artist_2.jpg",
-		"projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
-	},
-	"person3": {
-		"name": "Alex",
-		"age": 27,
-		"loves": "Nature",
-		"specializes": "tattoos",
-		"image": "/images/artist_3.jpg",
-		"projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
-	}
+  "person1": {
+    "name": "Mihai",
+    "age": 25,
+    "loves": "Music",
+    "specializes": "tattoos",
+    "image": "/images/artist_1.jpg",
+    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+  },
+  "person2": {
+    "name": "Ana",
+    "age": 23,
+    "loves": "Art",
+    "specializes": "piercings",
+    "image": "/images/artist_2.jpg",
+    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+  },
+  "person3": {
+    "name": "Alex",
+    "age": 27,
+    "loves": "Nature",
+    "specializes": "tattoos",
+    "image": "/images/artist_3.jpg",
+    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+  }
 };
 
 function showAboutUs() {
-	const popUp = document.createElement('div');
-	popUp.classList.add('popup');
-	popUp.innerHTML = `
+  const popUp = document.createElement('div');
+  popUp.classList.add('popup');
+  popUp.innerHTML = `
         <div class="popup-content">
             <div class="bg">
                 <div class="pop-up-abtUs">
@@ -436,22 +434,22 @@ function showAboutUs() {
         <button class="close-popup">&#10006;</button>
     `;
 
-	// Append the pop-up to the body
-	document.body.appendChild(popUp);
+  // Append the pop-up to the body
+  document.body.appendChild(popUp);
 
-	// Close button functionality
-	const closeButton = popUp.querySelector('.close-popup');
-	closeButton.addEventListener('click', () => {
-		popUp.classList.add('closed'); // This triggers the closing animation
-		setTimeout(() => {
-			popUp.remove(); // Remove the pop-up after animation
-		}, 500); // Time to wait before removing element
-	});
+  // Close button functionality
+  const closeButton = popUp.querySelector('.close-popup');
+  closeButton.addEventListener('click', () => {
+    popUp.classList.add('closed'); // This triggers the closing animation
+    setTimeout(() => {
+      popUp.remove(); // Remove the pop-up after animation
+    }, 500); // Time to wait before removing element
+  });
 
-	// Function to update the .info div with the selected person's details
-	function updateInfo(person) {
-		const infoDiv = popUp.querySelector('.info');
-		infoDiv.innerHTML = `
+  // Function to update the .info div with the selected person's details
+  function updateInfo(person) {
+    const infoDiv = popUp.querySelector('.info');
+    infoDiv.innerHTML = `
             <div class="data">
                 <div class="image">
                     <img src="${person.image}" alt="${person.name}" class="person-image">
@@ -470,17 +468,17 @@ function showAboutUs() {
                 </div>
             </div>
         `;
-	}
+  }
 
-	// Initial update with the first person's details
-	updateInfo(images.person1);
+  // Initial update with the first person's details
+  updateInfo(images.person1);
 
-	// Add event listeners to radio buttons
-	const radioButtons = popUp.querySelectorAll('.radio-input');
-	radioButtons.forEach(radio => {
-		radio.addEventListener('change', (event) => {
-			const selectedPerson = images[event.target.value];
-			updateInfo(selectedPerson);
-		});
-	});
+  // Add event listeners to radio buttons
+  const radioButtons = popUp.querySelectorAll('.radio-input');
+  radioButtons.forEach(radio => {
+    radio.addEventListener('change', (event) => {
+      const selectedPerson = images[event.target.value];
+      updateInfo(selectedPerson);
+    });
+  });
 }
