@@ -45,7 +45,7 @@ function showGallery() {
  					<main><div class="container">
       <div class="fixed">
         <div class="nav-content">
-          <a href="https://www.instagram.com/_untamed_ink_/"><img class="logo" alt="logo" src="/images/ig-logo.png" /></a>
+          <a href="https://www.instagram.com/_untamed_ink_/" target="_blank"><img class="logo" alt="logo" src="/images/ig-logo.png" /></a>
           <div>
             <button class="btn-primary">Log In</button>
             <button class="btn-ig">Sign Up</button>
@@ -61,7 +61,7 @@ function showGallery() {
           </div>
           <div class="profile-info">
             <div class="title row">
-              <a href="https://www.instagram.com/_untamed_ink_/" class="ig-name"><h2>_untamed_ink_</h2></a>
+              <a href="https://www.instagram.com/_untamed_ink_/" target="_blank" class="ig-name"><h2>_untamed_ink_</h2></a>
               <span class="verfied-icon"></span>
               <button class="btn-primary">Follow</button>
             </div>
