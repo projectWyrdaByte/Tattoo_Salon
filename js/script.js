@@ -324,7 +324,7 @@ function showPopUp() {
                                 <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a class="privacy" href="/pages/privacy_policy.html">Politica de confidențialitate.</a></span>
                             </div>
                             <div>
-                                <button class="btn" type="submit">Trimite Mesaj</button>
+                                <button class="btn">Trimite Mesaj</button>
                             </div>
                         </form>
                     </div>

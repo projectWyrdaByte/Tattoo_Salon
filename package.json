@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "meshoptimizer": "^0.22.0"
+    "meshoptimizer": "^0.22.0",
+    "three": "^0.173.0"
   }
 }
