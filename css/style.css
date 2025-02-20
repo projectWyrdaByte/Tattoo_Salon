@@ -74,8 +74,8 @@ canvas {
 /* Next Button */
 .next-button {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: 1vw;
+    bottom: 2vh;
     cursor: pointer;
     border: 0;
     background-color: transparent;
