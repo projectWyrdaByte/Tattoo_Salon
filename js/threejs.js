@@ -25,7 +25,7 @@ scene.add(directionalLight2);
 
 // GLTF Model 
 const loader = new THREE.GLTFLoader();
-loader.load('./tattoo/final.glb', function (gltf) {
+loader.load('./tattoo/untitled.glb', function (gltf) {
 	const model = gltf.scene;
 	model.scale.set(2, 2, 2);
 	model.position.set(0, 0, 0);

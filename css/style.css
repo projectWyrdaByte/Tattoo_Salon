@@ -60,6 +60,12 @@ canvas {
 
 }
 
+@media screen and (max-width: 768px) {
+.copyright{
+    font-size: 12px;
+}
+}
+
 .footer-img {
     width: 20px;
     filter: invert(.8);
@@ -467,6 +473,10 @@ input::placeholder {
     position: absolute;
     left: 10px;
 }
+
+input[type=number] {
+    appearance: textfield;
+  }
 
 .btn {
     width: 100%;
@@ -1059,16 +1069,19 @@ header {
 
 /* Gallery */
 .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    display: grid;
+    gap: 16px;
+    max-width: 70vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
 }
 
 @media only screen and (max-width: 864px) {
     .gallery {
-        gap: 3px;
+        gap: 6px;
         display: flex;
-        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
@@ -1077,8 +1090,8 @@ header {
 }
 
 .gallery-item img {
-    width: 250px;
-    height: 250px;
+    width: 26vw;
+    height: 26vw;
     object-fit: cover;
     display: block;
 }
@@ -1109,6 +1122,7 @@ main {
     max-width: 80vw;
     max-height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 @media only screen and (max-width: 735px) {
