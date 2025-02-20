@@ -1322,11 +1322,11 @@ main {
 /* Back button */
 .back-button {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 30px;
+    left: 30px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: var(--accent-color);
+    background-image: linear-gradient(to bottom right, var(--secondary-color), var(--secondary-color));
     color: var(--light-text-color);
     border: none;
     border-radius: var(--border-radius);

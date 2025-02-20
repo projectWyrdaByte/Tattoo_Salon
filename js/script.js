@@ -432,7 +432,7 @@ function showAboutUs() {
   function updateInfo(person) {
     const infoDiv = popUp.querySelector('.info');
     infoDiv.innerHTML = `
-            <button class="back-button">Back</button>
+            <button class="back-button">Înapoi</button>
             <div class="data">
                 <div class="image">
                     <img src="${person.image}" alt="${person.name}" class="person-image">
