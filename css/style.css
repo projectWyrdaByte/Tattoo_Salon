@@ -67,19 +67,6 @@ canvas {
     filter: invert(.8);
 }
 
-/* Camera Position Display */
-.camera-position {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: var(--light-text-color);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: var(--border-radius);
-    z-index: 10;
-}
-
 /* Next Button */
 .next-button {
     position: fixed;
@@ -299,7 +286,7 @@ a {
     }
 }
 
-/* Even smaller screens */
+/* smaller screens */
 @media screen and (max-width: 480px) {
     .nav-item {
         font-size: 64px;
@@ -326,23 +313,7 @@ a {
     }
 }
 
-/* Landscape orientation */
-@media screen and (max-height: 480px) and (orientation: landscape) {
-    .nav-container {
-        padding-top: 80px;
-    }
-
-    .nav-item {
-        font-size: 28px;
-        padding: 8px 15px;
-    }
-
-    .nav-icon {
-        margin: 20px auto;
-    }
-}
-
-/* Pop-up stylisation */
+/* Pop-up*/
 .bg {
     display: flex;
     justify-content: center;
@@ -639,7 +610,7 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* Pop-up visibility */
+/* Pop-up */
 .popup {
     position: absolute;
     top: 50%;
@@ -818,7 +789,7 @@ input::-webkit-inner-spin-button {
     margin-bottom: 10px;
 }
 
-/* Responsive Adjustments */
+/* Responsive fuxes*/
 @media (max-width: 1024px) {
     .abtUs {
         width: 70vw;
@@ -1256,7 +1227,7 @@ main {
     height: 32px;
 }
 
-/* Centered names column */
+/* Centered names columnn */
 .names-column {
     display: flex;
     flex-direction: column;

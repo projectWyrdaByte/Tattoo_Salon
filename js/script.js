@@ -230,12 +230,12 @@ function showGallery() {
   // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); // This triggers the closing animation
+    popUp.classList.add('closed'); 
     setTimeout(() => {
-      popUp.remove(); // Remove the pop-up after animation
+      popUp.remove(); // Remove pop-up after animation
       showNavIconAndMenu();
 
-    }, 500); // Time to wait before removing element
+    }, 500);   
   });
 
 
@@ -340,12 +340,12 @@ function showPopUp() {
   // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); // This triggers the closing animation
+    popUp.classList.add('closed'); // 
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
       showNavIconAndMenu();
 
-    }, 500); // Time to wait before removing element
+    }, 500); 
   });
 
   // EmailJS Connection
@@ -367,7 +367,7 @@ function showPopUp() {
   });
 }
 
-// Make sure 'images' is declared and initialized at the beginning of the script
+// Artist's data
 const images = {
   "person1": {
     "name": "Mihai",
@@ -422,15 +422,15 @@ function showAboutUs() {
   // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); // This triggers the closing animation
+    popUp.classList.add('closed'); 
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
       showNavIconAndMenu();
 
-    }, 500); // Time to wait before removing element
+    }, 500); 
   });
 
-  // Function to update the .info div with the selected person's details
+  // display artist's info in the pop-up
   function updateInfo(person) {
     const infoDiv = popUp.querySelector('.info-profile');
     infoDiv.innerHTML = `

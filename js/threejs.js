@@ -6,7 +6,7 @@ scene.background = new THREE.Color(0x181818);
 // Camera setup
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// Renderer setup
+// Renderer   setup
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -23,7 +23,7 @@ const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight2.position.set(-121, 128, -138);
 scene.add(directionalLight2);
 
-// GLTF Model Loader
+// GLTF Model 
 const loader = new THREE.GLTFLoader();
 loader.load('./tattoo/final.glb', function (gltf) {
 	const model = gltf.scene;
@@ -37,10 +37,8 @@ loader.load('./tattoo/final.glb', function (gltf) {
 
 // OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.25;
 
-// Force initial position after a slight delay
+// Initial position 
 setTimeout(() => {
 	camera.position.set(-4.77, 19.81, -1.35);
 	camera.lookAt(-4.61, 19.11, -13.01);
@@ -50,8 +48,10 @@ setTimeout(() => {
 	controls.update();
 }, 100);
 
-// Display the camera position
-const cameraPositionDiv = document.getElementById('cameraPosition');
+// Disable the camera navigation
+controls.enableRotate = false;
+controls.enableZoom = false;
+controls.enablePan = false;
 
 // Animate the scene
 function animate() {
@@ -61,13 +61,7 @@ function animate() {
 	TWEEN.update();
 
 	// Update the camera position display
-	cameraPositionDiv.innerHTML = `
-            Camera Position: 
-            X: ${camera.position.x.toFixed(2)}, 
-            Y: ${camera.position.y.toFixed(2)}, 
-            Z: ${camera.position.z.toFixed(2)}
-        `;
-
+	
 	controls.update();
 	renderer.render(scene, camera);
 }
@@ -79,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const button = document.getElementById('animateCamera');
 	if (button) {
 		button.addEventListener('click', () => {
-			console.log('Button clicked'); // Debug log
+			console.log('Button clicked'); 
 			animateCamera();
 		});
 	} else {
-		console.error('Button not found!'); // Debug log
+		console.error('Button not fondd!'); 
 	}
 });
 
@@ -126,7 +120,7 @@ function animateCamera() {
 			const navIconContainer = document.querySelector('.nav-icon-container');
 			const navIcon = document.getElementById('nav-icon');
 			navIconContainer.style.display = 'block';
-			navIcon.classList.add('open'); // Start as X
+			navIcon.classList.add('open'); 
 
 			setTimeout(() => {
 				navIconContainer.classList.add('visible');
@@ -140,7 +134,7 @@ function animateCamera() {
 				nav.classList.add('visible');
 				nav.classList.add('active');
 
-				// Animate nav items
+				// Animate nav-items
 				const navItems = Array.from(document.querySelectorAll('.nav-item'));
 				navItems.forEach((item, i) => {
 					setTimeout(() => {
@@ -218,21 +212,20 @@ function animateToContacts() {
 	const navIconContainer = document.querySelector('.nav-icon-container');
 	const navIcon = document.getElementById('nav-icon');
 
-	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
 
 	const navItems = Array.from(document.querySelectorAll('.nav-item'));
 	navItems.forEach((item, i) => {
 		setTimeout(() => {
 			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
 			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
+		}, i * 200); // Delay each item by .2s
 	});
 
 	setTimeout(() => {
 		nav.classList.remove('visible', 'active');
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+	}, navItems.length * 200 + 300); 
 
 	// Define start and end positions
 	const startPos = {
@@ -293,21 +286,20 @@ function animateToGallery() {
 	const navIconContainer = document.querySelector('.nav-icon-container');
 	const navIcon = document.getElementById('nav-icon');
 
-	console.log('Before closing nav menu - Nav visibility:', nav.style.display);
 
 	const navItems = Array.from(document.querySelectorAll('.nav-item'));
 	navItems.forEach((item, i) => {
 		setTimeout(() => {
 			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
 			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
+		}, i * 200); // Delay items by .2s
 	});
 
 	setTimeout(() => {
 		nav.classList.remove('visible', 'active');
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+	}, navItems.length * 200 + 300); 
 
 	// Define start and end positions
 	const startPos = {
@@ -398,7 +390,7 @@ function closeNavMenu(callback) {
 		setTimeout(() => {
 			item.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)`;
 			item.classList.remove('visible');
-		}, i * 200); // Delay each item by 200ms
+		}, i * 200); // Delay items by .2s
 	});
 
 	setTimeout(() => {
@@ -406,5 +398,5 @@ function closeNavMenu(callback) {
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
 		callback();
-	}, navItems.length * 200 + 300); // Ensure this happens after the last item disappears
+	}, navItems.length * 200 + 300); 
 }
