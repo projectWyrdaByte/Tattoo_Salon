@@ -193,82 +193,64 @@ function showGallery() {
 
       <div class="gallery">
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool1.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool1.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool2.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool2.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool3.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool3.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool4.jpg" />
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool4.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool5.jpg" />
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool5.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool6.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool6.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/oldschool7.jpeg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/oldschool7.jpeg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline1.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline1.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline2.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline2.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline3.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline3.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline4.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline4.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline5.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline5.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline6.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline6.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/outline7.jpeg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/outline7.jpeg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism1.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism1.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism2.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism2.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism3.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism3.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism4.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism4.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism5.jpg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism5.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/realism6.jpeg" />
-          <span class="media-icon"></span>
+          <img alt="gallery-post" class="gallery-post" src="/images/realism6.jpeg" />
         </div>
       </div>
     </main>
@@ -297,7 +279,40 @@ function showGallery() {
 
 
 
-
+  // Create a modal for displaying images
+  const imageModal = document.createElement('div');
+  imageModal.classList.add('image-modal');
+  imageModal.innerHTML = `
+    <div class="image-modal-content">
+      <span class="close-button">&times;</span>
+      <img class="modal-image" src="" alt="Image">
+    </div>
+  `;
+  document.body.appendChild(imageModal);
+  
+  const modalImage = imageModal.querySelector('.modal-image');
+  const closeBtn = imageModal.querySelector('.close-button');
+  
+  // Close modal when the close button is clicked
+  closeBtn.addEventListener('click', () => {
+    imageModal.style.display = 'none';
+  });
+  
+  // Close modal when clicking outside the image
+  imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+      imageModal.style.display = 'none';
+    }
+  });
+  
+  // Add click event to open gallery images in a modal
+  const galleryImages = document.querySelectorAll('.gallery-post');
+  galleryImages.forEach(galleryImage => {
+    galleryImage.addEventListener('click', () => {
+      modalImage.src = galleryImage.src;
+      imageModal.style.display = 'block';
+    });
+  });
 }
 
 
@@ -451,6 +466,25 @@ const images = {
   }
 };
 
+// Create a modal for displaying images
+const imageModal = document.createElement('div');
+imageModal.classList.add('image-modal');
+imageModal.innerHTML = `
+  <div class="image-modal-content">
+    <span class="close-button">&times;</span>
+    <img class="modal-image" src="" alt="Image">
+  </div>
+`;
+document.body.appendChild(imageModal);
+
+const modalImage = imageModal.querySelector('.modal-image');
+const closeButton = imageModal.querySelector('.close-button');
+
+// Close modal when the close button is clicked
+closeButton.addEventListener('click', () => {
+  imageModal.style.display = 'none';
+});
+
 function showAboutUs() {
   const popUp = document.createElement('div');
   popUp.classList.add('popup');
@@ -517,6 +551,15 @@ function showAboutUs() {
     backButton.addEventListener('click', () => {
       infoDiv.style.display = 'none';
       popUp.querySelector('.names-column').style.display = 'flex';
+    });
+
+    // Add click event to open project images in a modal
+    const projectImages = infoDiv.querySelectorAll('.project');
+    projectImages.forEach(projectImage => {
+      projectImage.addEventListener('click', () => {
+        modalImage.src = projectImage.src;
+        imageModal.style.display = 'block';
+      });
     });
   }
 
