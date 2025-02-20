@@ -425,6 +425,8 @@ function showAboutUs() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
+      showNavIconAndMenu();
+
     }, 500); // Time to wait before removing element
   });
 

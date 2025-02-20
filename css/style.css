@@ -828,6 +828,10 @@ input::-webkit-inner-spin-button {
     font-size: 48px;
 }
 
+.projects-container{
+    margin-top: 40px;
+}
+
 .projects {
     display: flex;
     flex-wrap: wrap;
