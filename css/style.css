@@ -48,21 +48,23 @@ canvas {
     bottom: 0;
     width: 100%;
     font-size: 14px;
-    color: var(--text-color);
-    background-color: #d6e1ebf2;
+    color: whitesmoke;
+    background-color: #181818;
     text-align: center;
     z-index: 100;
-    padding: 10px 0;
 }
 
 .footer-main {
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
+    margin-top: 6px;
+
 }
 
 .footer-img {
     width: 20px;
+    filter: invert(.8);
 }
 
 /* Camera Position Display */
@@ -148,7 +150,7 @@ a {
     transform: translateX(400px);
     transition: all var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
-    color: var(--light-text-color);
+    color: #F5F5F5;
     font-size: 94px;
     padding: 15px 25px;
     position: relative;
@@ -165,7 +167,7 @@ a {
 }
 
 .nav-item:hover {
-    color: #587c8d;
+    color: #5a91c0;
     transition: color var(--transition-duration) ease-in-out;
 }
 
@@ -300,7 +302,7 @@ a {
 /* Even smaller screens */
 @media screen and (max-width: 480px) {
     .nav-item {
-        font-size: 32px;
+        font-size: 64px;
         margin-right: 15px;
     }
 
@@ -378,6 +380,10 @@ a {
         height: 80vh;
         overflow-y: scroll;
     }
+
+    .pop-up-abtUs {
+        padding: 0;
+    }
 }
 
 .pop-up-abtUs {
@@ -388,8 +394,13 @@ a {
     justify-content: center;
     gap: 40px;
     border-radius: var(--border-radius);
-    padding: 50px 70px 0px 70px;
     max-height: 80%;
+}
+
+@media only screen and (max-width: 460px) {
+    .pop-up-abtUs {
+        padding: 0;
+    }
 }
 
 .box1 .title,
@@ -424,15 +435,21 @@ a {
     flex: 1;
 }
 
+.privacy{
+    text-decoration: underline;
+}
+
 .title {
     font-size: 36px;
     font-weight: 700;
 }
 
-.info {
+.info-profile {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    padding: 50px 70px 0 70px;
+    margin-top: 20px
 }
 
 .subtitle {
@@ -751,63 +768,9 @@ input::-webkit-inner-spin-button {
 
 .abtUs {
     width: 50vw;
-    max-width: 600px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 8px;
-}
-
-.radio-group {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    border: 2px solid #4d4c83ad;
-    border-radius: var(--border-radius);
-}
-
-.radio-group label {
-    flex: 1;
-    border-right: 2px solid #4d4c83ad;
-    text-align: center;
-}
-
-.radio-group label:last-child {
-    border-right: 0;
-}
-
-.radio-button {
-    cursor: pointer;
-    align-items: center;
-    background: white;
-    color: black;
-    transition: background var(--transition-duration) ease-in-out, color var(--transition-duration) ease-in-out;
-    flex-grow: 1;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.radio1 {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-.radio2 {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-.radio-input {
-    display: none;
-}
-
-.radio-input:checked+.radio-button {
-    background: linear-gradient(to bottom right, var(--secondary-color), var(--secondary-color));
-    color: var(--light-text-color);
-}
-
-.info {
-    margin-top: 20px;
 }
 
 .data {
@@ -818,9 +781,14 @@ input::-webkit-inner-spin-button {
 
 .person-image {
     height: 30vh;
-    max-height: 200px;
     width: auto;
     margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .person-image {
+        height: 60vh;
+    }
 }
 
 .person-name {
@@ -830,6 +798,10 @@ input::-webkit-inner-spin-button {
 
 .projects-container{
     margin-top: 40px;
+}
+
+.project-title{
+    padding-left: 18px;
 }
 
 .projects {
@@ -858,7 +830,6 @@ input::-webkit-inner-spin-button {
 
     .person-image {
         height: 25vh;
-        max-height: 180px;
     }
 
     .project {
@@ -872,19 +843,6 @@ input::-webkit-inner-spin-button {
         max-width: 500px;
     }
 
-    .radio-group {
-        flex-direction: column;
-    }
-
-    .radio-group label {
-        border-right: none;
-        border-bottom: 2px solid #4d4c83ad;
-    }
-
-    .radio-group label:last-child {
-        border-bottom: 0;
-    }
-
     .data {
         flex-direction: column;
         align-items: center;
@@ -892,14 +850,13 @@ input::-webkit-inner-spin-button {
     }
 
     .person-image {
-        height: 20vh;
-        max-height: 150px;
+        height: 30vh;;
         margin-right: 0;
         margin-bottom: 10px;
     }
 
     .person-name {
-        font-size: 32px;
+        font-size: 48px;
     }
 
     .projects {
@@ -907,7 +864,8 @@ input::-webkit-inner-spin-button {
     }
 
     .project {
-        width: 40vw;
+        
+        width: 26vw;
         min-width: 120px;
     }
 }
@@ -918,11 +876,7 @@ input::-webkit-inner-spin-button {
     }
 
     .person-name {
-        font-size: 28px;
-    }
-
-    .person-image {
-        height: 18vh;
+        font-size: 48px;
     }
 
     .project {
@@ -1160,7 +1114,7 @@ header {
     display: block;
 }
 
-@media only screen and (max-width: 735px) {
+@media only screen and (max-width: 768px) {
     .gallery-item {
         position: relative;
         display: flex;
@@ -1168,8 +1122,8 @@ header {
     }
 
     .gallery-item img {
-        width: 150px;
-        height: 150px;
+        width: 155px;
+        height: 155px;
         object-fit: cover;
         display: block;
     }
@@ -1252,6 +1206,7 @@ main {
         gap: 50px;
         margin-bottom: 20px;
         justify-content: center;
+        margin-top: 20px;
     }
 }
 
@@ -1320,7 +1275,7 @@ main {
 }
 
 .name-item:hover {
-    color: var(--accent-color);
+    color: #5a91c0;
 }
 
 /* Back button */
@@ -1330,7 +1285,7 @@ main {
     left: 30px;
     padding: 10px 20px;
     font-size: 16px;
-    background-image: linear-gradient(to bottom right, var(--secondary-color), var(--secondary-color));
+    background-image: linear-gradient(to bottom right, var(--secondary-color), #0e0d42);
     color: var(--light-text-color);
     border: none;
     border-radius: var(--border-radius);
@@ -1345,7 +1300,7 @@ main {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .name-item {
-        font-size: 20px;
+        font-size: 64px;
     }
 
     .back-button {
@@ -1355,8 +1310,9 @@ main {
 }
 
 @media (max-width: 480px) {
+
     .name-item {
-        font-size: 18px;
+        font-size: 64px;
     }
 
     .back-button {

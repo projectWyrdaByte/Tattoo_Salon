@@ -1,6 +1,7 @@
 // Scene setup
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x744c9a);
+scene.background = new THREE.Color(0x181818);
+
 
 // Camera setup
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -24,10 +25,10 @@ scene.add(directionalLight2);
 
 // GLTF Model Loader
 const loader = new THREE.GLTFLoader();
-loader.load('./tattoo/idk_1-v2-v3.glb', function (gltf) {
+loader.load('./tattoo/final.glb', function (gltf) {
 	const model = gltf.scene;
 	model.scale.set(2, 2, 2);
-	model.position.set(0, -1, 0);
+	model.position.set(0, 0, 0);
 	scene.add(model);
 
 }, undefined, function (error) {
@@ -41,9 +42,9 @@ controls.dampingFactor = 0.25;
 
 // Force initial position after a slight delay
 setTimeout(() => {
-	camera.position.set(-37.08, 40.97, -36.26);
-	camera.lookAt(-60.97, 41.54, -34.94);
-	controls.target.set(-60.97, 41.54, -34.94);
+	camera.position.set(-4.77, 19.81, -1.35);
+	camera.lookAt(-4.61, 19.11, -13.01);
+	controls.target.set(-4.61, 19.11, -13.01);
 
 	camera.updateProjectionMatrix();
 	controls.update();
@@ -101,12 +102,12 @@ function animateCamera() {
 	};
 
 	const endPos = {
-		x: 48.76,
-		y: 65.56,
-		z: 56.23,
-		targetX: -57.31,
-		targetY: 12.14,
-		targetZ: -71.57
+		x: 37.15,
+		y: 26.12,
+		z: 39.125,
+		targetX: -6.4,
+		targetY: 3.53,
+		targetZ: -9.03
 	};
 
 	new TWEEN.Tween(startPos)
@@ -166,12 +167,12 @@ function animateToAboutUs() {
 	};
 
 	const endPos = {
-		x: -33.9,
-		y: 43.77,
-		z: 7.38,
-		targetX: -61.76,
-		targetY: 44.02,
-		targetZ: 8
+		x: 4.24,
+		y: 21.73,
+		z: -6.39,
+		targetX: 4.22,
+		targetY: 21.34,
+		targetZ: -13.02
 	};
 
 	let cameraPositionX = camera.position.x.toFixed(2);
@@ -244,12 +245,12 @@ function animateToContacts() {
 	};
 
 	const endPos = {
-		x: -49.83,
-		y: 18.92,
-		z: 47.35,
-		targetX: -59.07,
-		targetY: 17.05,
-		targetZ: 49.31
+		x: 0.16,
+		y: 13.65,
+		z: -7.34,
+		targetX: 0.21,
+		targetY: 12.62,
+		targetZ: -11.70
 	};
 
 	let cameraPositionX = camera.position.x.toFixed(2);
@@ -319,12 +320,12 @@ function animateToGallery() {
 	};
 
 	const endPos = {
-		x: 2.98,
-		y: 16.77,
-		z: -11.86,
-		targetX: 2.83,
-		targetY: 11.03,
-		targetZ: -11.89
+		x: -8.7,
+		y: 14.05,
+		z: -3.57,
+		targetX: -8.8,
+		targetY: 11,
+		targetZ: -3.6
 	};
 	let cameraPositionX = camera.position.x.toFixed(2);
 	let cameraPositionY = camera.position.y.toFixed(2);

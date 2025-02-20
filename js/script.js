@@ -321,7 +321,7 @@ function showPopUp() {
                             </div>
                             <div class="policy">
                                 <input type="checkbox" name="privacy" class="checkbox" required>
-                                <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a href="/pages/privacy_policy.html">Politica de confidențialitate.</a>.</span>
+                                <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a class="privacy" href="/pages/privacy_policy.html">Politica de confidențialitate.</a></span>
                             </div>
                             <div>
                                 <button class="btn" type="submit">Trimite Mesaj</button>
@@ -372,24 +372,24 @@ const images = {
   "person1": {
     "name": "Mihai",
     "age": 25,
-    "loves": "Music",
-    "specializes": "tattoos",
-    "image": "/images/artist_1.jpg",
+    "loves": "muzica",
+    "specializes": "piercing-uri",
+    "image": "/images/artist_2.jpg",
     "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
   },
   "person2": {
     "name": "Ana",
     "age": 23,
-    "loves": "Art",
-    "specializes": "piercings",
-    "image": "/images/artist_2.jpg",
+    "loves": "arta",
+    "specializes": "tatuaje",
+    "image": "/images/artist_1.jpg",
     "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
   },
   "person3": {
     "name": "Alex",
     "age": 27,
-    "loves": "Nature",
-    "specializes": "tattoos",
+    "loves": "natura",
+    "specializes": "tatuaje",
     "image": "/images/artist_3.jpg",
     "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
   }
@@ -408,7 +408,7 @@ function showAboutUs() {
                             <div class="name-item" data-person="person2">Ana</div>
                             <div class="name-item" data-person="person3">Alex</div>
                         </div>
-                        <div class="info" style="display: none;"></div> 
+                        <div class="info-profile" style="display: none;"></div> 
                     </div>
                 </div>
             </div>
@@ -432,7 +432,7 @@ function showAboutUs() {
 
   // Function to update the .info div with the selected person's details
   function updateInfo(person) {
-    const infoDiv = popUp.querySelector('.info');
+    const infoDiv = popUp.querySelector('.info-profile');
     infoDiv.innerHTML = `
             <button class="back-button">Înapoi</button>
             <div class="data">
@@ -447,7 +447,7 @@ function showAboutUs() {
                 </div>
             </div>
             <div class="projects-container">
-                <h3>Proiecte:</h3>
+                <h3 class="project-title">Proiecte:</h3>
                 <div class="projects">
                     ${person.projects.map(project => `<img src="${project}" class="project" alt="Project">`).join('')}
                 </div>
