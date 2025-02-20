@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const navIcon = document.getElementById('nav-icon');
   const nav = document.getElementById('nav');
@@ -81,16 +79,6 @@ function showGallery() {
             </div>
           </div>
         </div>
-        <div class="profile-info mobile-only">
-          <div class="descriptions row">
-            <h1>apple</h1>
-            <span>
-              Everyone has a story to tell.
-              <br />
-              Tag <a>#ShotoniPhone</a> to take part.
-            </span>
-          </div>
-        </div>
       </header>
 
       
@@ -149,15 +137,15 @@ function showGallery() {
       <div class="mobile-tabs mobile-only">
         <ul>
           <li>
-            <div>722</div>
+            <span>22</span>
             posts
           </li>
           <li>
-            <div>25.1m</div>
+            <span>6</span>
             followers
           </li>
           <li>
-            <div>6</div>
+            <span>0</span>
             following
           </li>
         </ul>
@@ -245,7 +233,7 @@ function showGallery() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
-					showNavIconAndMenu();
+      showNavIconAndMenu();
 
     }, 500); // Time to wait before removing element
   });
@@ -355,7 +343,7 @@ function showPopUp() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
-					showNavIconAndMenu();
+      showNavIconAndMenu();
 
     }, 500); // Time to wait before removing element
   });
@@ -415,22 +403,12 @@ function showAboutUs() {
             <div class="bg">
                 <div class="pop-up-abtUs">
                     <div class="abtUs" id="abtUs">
-                        <div class="radio-group">
-                            <label>
-                              <input type="radio" name="option" value="person1" class="radio-input" checked>
-                              <div class="radio-button radio1">Mihai</div>
-                            </label>
-                            <label>
-                              <input type="radio" name="option" value="person2" class="radio-input">
-                              <div class="radio-button">Ana</div>
-                            </label>
-                            <label>
-                              <input type="radio" name="option" value="person3" class="radio-input">
-                              <div class="radio-button radio2">Alex</div>
-                            </label>
+                          <div class="names-column">
+                            <div class="name-item" data-person="person1">Mihai</div>
+                            <div class="name-item" data-person="person2">Ana</div>
+                            <div class="name-item" data-person="person3">Alex</div>
                         </div>
-                        <div class="info">
-                        </div>
+                        <div class="info" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -447,8 +425,6 @@ function showAboutUs() {
     popUp.classList.add('closed'); // This triggers the closing animation
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
-					showNavIconAndMenu();
-
     }, 500); // Time to wait before removing element
   });
 
@@ -456,6 +432,7 @@ function showAboutUs() {
   function updateInfo(person) {
     const infoDiv = popUp.querySelector('.info');
     infoDiv.innerHTML = `
+            <button class="back-button">Back</button>
             <div class="data">
                 <div class="image">
                     <img src="${person.image}" alt="${person.name}" class="person-image">
@@ -470,20 +447,26 @@ function showAboutUs() {
             <div class="projects-container">
                 <h3>Proiecte:</h3>
                 <div class="projects">
-                    ${person.projects.map(project => `<img src="${project}" class="project" id="project" alt="Project">`).join('')}
+                    ${person.projects.map(project => `<img src="${project}" class="project" alt="Project">`).join('')}
                 </div>
             </div>
         `;
+    infoDiv.style.display = 'block';
+    popUp.querySelector('.names-column').style.display = 'none';
+
+    // Back button functionality
+    const backButton = infoDiv.querySelector('.back-button');
+    backButton.addEventListener('click', () => {
+      infoDiv.style.display = 'none';
+      popUp.querySelector('.names-column').style.display = 'flex';
+    });
   }
 
-  // Initial update with the first person's details
-  updateInfo(images.person1);
-
-  // Add event listeners to radio buttons
-  const radioButtons = popUp.querySelectorAll('.radio-input');
-  radioButtons.forEach(radio => {
-    radio.addEventListener('change', (event) => {
-      const selectedPerson = images[event.target.value];
+  // Add event listeners to name items
+  const nameItems = popUp.querySelectorAll('.name-item');
+  nameItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      const selectedPerson = images[event.target.dataset.person];
       updateInfo(selectedPerson);
     });
   });
