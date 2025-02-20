@@ -55,7 +55,7 @@ function showGallery() {
       <header>
         <div class="header-wrap">
           <div class="profile-pic">
-            <img src="/images/artist_1.jpg" alt="profile-logo" />
+            <img src="/images/circle.png" alt="profile-logo" />
           </div>
           <div class="profile-info">
             <div class="title row">
@@ -193,25 +193,81 @@ function showGallery() {
 
       <div class="gallery">
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/artist_1.jpg" />
+          <img alt="gallery-post" src="/images/oldschool1.jpg" />
           <span class="media-icon"></span>
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/tattoo1.jpg" />
+          <img alt="gallery-post" src="/images/oldschool2.jpg" />
           <span class="media-icon"></span>
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/artist_2.jpg" />
+          <img alt="gallery-post" src="/images/oldschool3.jpg" />
           <span class="media-icon"></span>
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/tattoo2.jpeg" />
+          <img alt="gallery-post" src="/images/oldschool4.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/tattoo3.jpeg" />
+          <img alt="gallery-post" src="/images/oldschool5.jpg" />
         </div>
         <div class="gallery-item">
-          <img alt="gallery-post" src="/images/tattoo4.jpeg" />
+          <img alt="gallery-post" src="/images/oldschool6.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/oldschool7.jpeg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline1.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline2.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline3.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline4.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline5.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline6.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/outline7.jpeg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism1.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism2.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism3.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism4.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism5.jpg" />
+          <span class="media-icon"></span>
+        </div>
+        <div class="gallery-item">
+          <img alt="gallery-post" src="/images/realism6.jpeg" />
           <span class="media-icon"></span>
         </div>
       </div>
@@ -324,7 +380,7 @@ function showPopUp() {
                                 <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a class="privacy" href="/pages/privacy_policy.html">Politica de confidențialitate.</a></span>
                             </div>
                             <div>
-                                <button class="btn">Trimite Mesaj</button>
+                                <button class="btn" type="submit">Trimite Mesaj</button>
                             </div>
                         </form>
                     </div>
@@ -373,25 +429,25 @@ const images = {
     "name": "Mihai",
     "age": 25,
     "loves": "muzica",
-    "specializes": "piercing-uri",
+    "specializes": "Old-School tattoos",
     "image": "/images/artist_2.jpg",
-    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+    "projects": ["/images/oldschool1.jpg", "/images/oldschool2.jpg", "/images/oldschool3.jpg", "/images/oldschool4.jpg", "/images/oldschool5.jpg", "/images/oldschool6.jpg", "/images/oldschool7.jpeg"]
   },
   "person2": {
     "name": "Ana",
     "age": 23,
     "loves": "arta",
-    "specializes": "tatuaje",
+    "specializes": "Realism tattoos",
     "image": "/images/artist_1.jpg",
-    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+    "projects": ["/images/realism1.jpg", "/images/realism2.jpg", "/images/realism3.jpg", "/images/realism4.jpg", "/images/realism5.jpg", "/images/realism6.jpeg"]
   },
   "person3": {
     "name": "Alex",
     "age": 27,
     "loves": "natura",
-    "specializes": "tatuaje",
+    "specializes": "Outline tattoos",
     "image": "/images/artist_3.jpg",
-    "projects": ["https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg", "https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"]
+    "projects": ["/images/outline1.jpg", "/images/outline2.jpg", "/images/outline3.jpg", "/images/outline4.jpg", "/images/outline5.jpg", "/images/outline6.jpg", "/images/outline7.jpeg"]
   }
 };
 

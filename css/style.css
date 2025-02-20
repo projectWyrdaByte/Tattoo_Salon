@@ -1090,8 +1090,8 @@ header {
 }
 
 .gallery-item img {
-    width: 26vw;
-    height: 26vw;
+    width: 20vw;
+    height: 20vw;
     object-fit: cover;
     display: block;
 }
@@ -1104,8 +1104,8 @@ header {
     }
 
     .gallery-item img {
-        width: 155px;
-        height: 155px;
+        width: 26vw;
+        height: 26vh;
         object-fit: cover;
         display: block;
     }
@@ -1268,7 +1268,7 @@ main {
     left: 30px;
     padding: 10px 20px;
     font-size: 16px;
-    background-image: linear-gradient(to bottom right, var(--secondary-color), #0e0d42);
+    background-color: transparent;
     color: var(--light-text-color);
     border: none;
     border-radius: var(--border-radius);
