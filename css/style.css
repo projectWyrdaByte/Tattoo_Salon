@@ -6,7 +6,6 @@
 }
 
 :root {
-    --primary-color: #744c9a;
     --secondary-color: #0a0936;
     --accent-color: #0095f6;
     --background-color: #f0f0f0;
@@ -29,7 +28,6 @@ body {
     margin: 0;
     overflow: hidden;
     height: 100%;
-    background-color: var(--primary-color);
     color: var(--text-color);
 }
 
