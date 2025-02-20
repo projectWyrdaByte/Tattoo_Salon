@@ -408,7 +408,7 @@ function showAboutUs() {
                             <div class="name-item" data-person="person2">Ana</div>
                             <div class="name-item" data-person="person3">Alex</div>
                         </div>
-                        <div class="info" style="display: none;"></div>
+                        <div class="info" style="display: none;"></div> 
                     </div>
                 </div>
             </div>

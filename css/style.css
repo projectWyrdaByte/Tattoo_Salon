@@ -1303,15 +1303,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 70vh;
     gap: 20px;
 }
 
 .name-item {
-    font-size: 24px;
+    font-size: 67px;
+    font-family: "Valhalica";
     font-weight: bold;
     cursor: pointer;
-    color: var(--primary-color);
     transition: color var(--transition-duration) ease-in-out;
 }
 
@@ -1326,7 +1326,7 @@ main {
     left: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: var(--light-text-color);
     border: none;
     border-radius: var(--border-radius);
