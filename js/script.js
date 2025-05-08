@@ -268,12 +268,12 @@ function showGallery() {
   // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); 
+    popUp.classList.add('closed');
     setTimeout(() => {
       popUp.remove(); // Remove pop-up after animation
       showNavIconAndMenu();
 
-    }, 500);   
+    }, 500);
   });
 
 
@@ -289,22 +289,22 @@ function showGallery() {
     </div>
   `;
   document.body.appendChild(imageModal);
-  
+
   const modalImage = imageModal.querySelector('.modal-image');
   const closeBtn = imageModal.querySelector('.close-button');
-  
+
   // Close modal when the close button is clicked
   closeBtn.addEventListener('click', () => {
     imageModal.style.display = 'none';
   });
-  
+
   // Close modal when clicking outside the image
   imageModal.addEventListener('click', (e) => {
     if (e.target === imageModal) {
       imageModal.style.display = 'none';
     }
   });
-  
+
   // Add click event to open gallery images in a modal
   const galleryImages = document.querySelectorAll('.gallery-post');
   galleryImages.forEach(galleryImage => {
@@ -318,6 +318,208 @@ function showGallery() {
 
 
 
+const countries = [
+  { "code": "AF", "dial_code": "+93", "number_length": 9 },
+  { "code": "AL", "dial_code": "+355", "number_length": 9 },
+  { "code": "DZ", "dial_code": "+213", "number_length": 9 },
+  { "code": "AS", "dial_code": "+1-684", "number_length": 7 },
+  { "code": "AD", "dial_code": "+376", "number_length": 6 },
+  { "code": "AO", "dial_code": "+244", "number_length": 9 },
+  { "code": "AI", "dial_code": "+1-264", "number_length": 7 },
+  { "code": "AQ", "dial_code": "+672", "number_length": 6 },
+  { "code": "AG", "dial_code": "+1-268", "number_length": 7 },
+  { "code": "AR", "dial_code": "+54", "number_length": 10 },
+  { "code": "AM", "dial_code": "+374", "number_length": 8 },
+  { "code": "AW", "dial_code": "+297", "number_length": 7 },
+  { "code": "AU", "dial_code": "+61", "number_length": 9 },
+  { "code": "AT", "dial_code": "+43", "number_length": 10 },
+  { "code": "AZ", "dial_code": "+994", "number_length": 9 },
+  { "code": "BA", "dial_code": "+387", "number_length": 8 },
+  { "code": "BB", "dial_code": "+1-246", "number_length": 7 },
+  { "code": "BD", "dial_code": "+880", "number_length": 10 },
+  { "code": "BE", "dial_code": "+32", "number_length": 9 },
+  { "code": "BF", "dial_code": "+226", "number_length": 8 },
+  { "code": "BG", "dial_code": "+359", "number_length": 9 },
+  { "code": "BH", "dial_code": "+973", "number_length": 8 },
+  { "code": "BI", "dial_code": "+257", "number_length": 8 },
+  { "code": "BJ", "dial_code": "+229", "number_length": 8 },
+  { "code": "BN", "dial_code": "+673", "number_length": 7 },
+  { "code": "BO", "dial_code": "+591", "number_length": 8 },
+  { "code": "BR", "dial_code": "+55", "number_length": 10 },
+  { "code": "BS", "dial_code": "+1-242", "number_length": 7 },
+  { "code": "BT", "dial_code": "+975", "number_length": 8 },
+  { "code": "BW", "dial_code": "+267", "number_length": 8 },
+  { "code": "BY", "dial_code": "+375", "number_length": 9 },
+  { "code": "BZ", "dial_code": "+501", "number_length": 7 },
+  { "code": "CA", "dial_code": "+1", "number_length": 10 },
+  { "code": "CD", "dial_code": "+243", "number_length": 9 },
+  { "code": "CF", "dial_code": "+236", "number_length": 8 },
+  { "code": "CG", "dial_code": "+242", "number_length": 9 },
+  { "code": "CH", "dial_code": "+41", "number_length": 9 },
+  { "code": "CI", "dial_code": "+225", "number_length": 8 },
+  { "code": "CL", "dial_code": "+56", "number_length": 9 },
+  { "code": "CM", "dial_code": "+237", "number_length": 9 },
+  { "code": "CN", "dial_code": "+86", "number_length": 11 },
+  { "code": "CO", "dial_code": "+57", "number_length": 10 },
+  { "code": "CR", "dial_code": "+506", "number_length": 8 },
+  { "code": "CU", "dial_code": "+53", "number_length": 8 },
+  { "code": "CV", "dial_code": "+238", "number_length": 7 },
+  { "code": "CY", "dial_code": "+357", "number_length": 8 },
+  { "code": "CZ", "dial_code": "+420", "number_length": 9 },
+  { "code": "DE", "dial_code": "+49", "number_length": 10 },
+  { "code": "DJ", "dial_code": "+253", "number_length": 8 },
+  { "code": "DK", "dial_code": "+45", "number_length": 8 },
+  { "code": "DM", "dial_code": "+1-767", "number_length": 7 },
+  { "code": "DO", "dial_code": "+1-809", "number_length": 7 },
+  { "code": "DZ", "dial_code": "+213", "number_length": 9 },
+  { "code": "EC", "dial_code": "+593", "number_length": 9 },
+  { "code": "EE", "dial_code": "+372", "number_length": 8 },
+  { "code": "EG", "dial_code": "+20", "number_length": 10 },
+  { "code": "ER", "dial_code": "+291", "number_length": 7 },
+  { "code": "ES", "dial_code": "+34", "number_length": 9 },
+  { "code": "ET", "dial_code": "+251", "number_length": 9 },
+  { "code": "FI", "dial_code": "+358", "number_length": 9 },
+  { "code": "FJ", "dial_code": "+679", "number_length": 7 },
+  { "code": "FM", "dial_code": "+691", "number_length": 7 },
+  { "code": "FR", "dial_code": "+33", "number_length": 9 },
+  { "code": "GA", "dial_code": "+241", "number_length": 9 },
+  { "code": "GB", "dial_code": "+44", "number_length": 10 },
+  { "code": "GD", "dial_code": "+1-473", "number_length": 7 },
+  { "code": "GE", "dial_code": "+995", "number_length": 9 },
+  { "code": "GH", "dial_code": "+233", "number_length": 9 },
+  { "code": "GM", "dial_code": "+220", "number_length": 7 },
+  { "code": "GN", "dial_code": "+224", "number_length": 8 },
+  { "code": "GQ", "dial_code": "+240", "number_length": 9 },
+  { "code": "GR", "dial_code": "+30", "number_length": 10 },
+  { "code": "GT", "dial_code": "+502", "number_length": 8 },
+  { "code": "GW", "dial_code": "+245", "number_length": 7 },
+  { "code": "GY", "dial_code": "+592", "number_length": 7 },
+  { "code": "HN", "dial_code": "+504", "number_length": 8 },
+  { "code": "HR", "dial_code": "+385", "number_length": 9 },
+  { "code": "HT", "dial_code": "+509", "number_length": 8 },
+  { "code": "HU", "dial_code": "+36", "number_length": 9 },
+  { "code": "ID", "dial_code": "+62", "number_length": 10 },
+  { "code": "IE", "dial_code": "+353", "number_length": 9 },
+  { "code": "IL", "dial_code": "+972", "number_length": 9 },
+  { "code": "IN", "dial_code": "+91", "number_length": 10 },
+  { "code": "IQ", "dial_code": "+964", "number_length": 10 },
+  { "code": "IR", "dial_code": "+98", "number_length": 10 },
+  { "code": "IS", "dial_code": "+354", "number_length": 7 },
+  { "code": "IT", "dial_code": "+39", "number_length": 10 },
+  { "code": "JM", "dial_code": "+1-876", "number_length": 7 },
+  { "code": "JO", "dial_code": "+962", "number_length": 9 },
+  { "code": "JP", "dial_code": "+81", "number_length": 10 },
+  { "code": "KE", "dial_code": "+254", "number_length": 9 },
+  { "code": "KG", "dial_code": "+996", "number_length": 9 },
+  { "code": "KH", "dial_code": "+855", "number_length": 9 },
+  { "code": "KI", "dial_code": "+686", "number_length": 5 },
+  { "code": "KM", "dial_code": "+269", "number_length": 7 },
+  { "code": "KN", "dial_code": "+1-869", "number_length": 7 },
+  { "code": "KP", "dial_code": "+850", "number_length": 9 },
+  { "code": "KR", "dial_code": "+82", "number_length": 9 },
+  { "code": "KW", "dial_code": "+965", "number_length": 8 },
+  { "code": "KZ", "dial_code": "+7", "number_length": 10 },
+  { "code": "LA", "dial_code": "+856", "number_length": 8 },
+  { "code": "LB", "dial_code": "+961", "number_length": 8 },
+  { "code": "LC", "dial_code": "+1-758", "number_length": 7 },
+  { "code": "LI", "dial_code": "+423", "number_length": 7 },
+  { "code": "LK", "dial_code": "+94", "number_length": 9 },
+  { "code": "LR", "dial_code": "+231", "number_length": 8 },
+  { "code": "LS", "dial_code": "+266", "number_length": 9 },
+  { "code": "LT", "dial_code": "+370", "number_length": 8 },
+  { "code": "LU", "dial_code": "+352", "number_length": 9 },
+  { "code": "LV", "dial_code": "+371", "number_length": 8 },
+  { "code": "LY", "dial_code": "+218", "number_length": 9 },
+  { "code": "MA", "dial_code": "+212", "number_length": 9 },
+  { "code": "MC", "dial_code": "+377", "number_length": 8 },
+  { "code": "MD", "dial_code": "+373", "number_length": 8 },
+  { "code": "ME", "dial_code": "+382", "number_length": 8 },
+  { "code": "MG", "dial_code": "+261", "number_length": 9 },
+  { "code": "MH", "dial_code": "+692", "number_length": 7 },
+  { "code": "MK", "dial_code": "+389", "number_length": 8 },
+  { "code": "ML", "dial_code": "+223", "number_length": 8 },
+  { "code": "MM", "dial_code": "+95", "number_length": 9 },
+  { "code": "MN", "dial_code": "+976", "number_length": 8 },
+  { "code": "MO", "dial_code": "+853", "number_length": 8 },
+  { "code": "MR", "dial_code": "+222", "number_length": 8 },
+  { "code": "MT", "dial_code": "+356", "number_length": 8 },
+  { "code": "MU", "dial_code": "+230", "number_length": 8 },
+  { "code": "MV", "dial_code": "+960", "number_length": 7 },
+  { "code": "MW", "dial_code": "+265", "number_length": 9 },
+  { "code": "MX", "dial_code": "+52", "number_length": 10 },
+  { "code": "MY", "dial_code": "+60", "number_length": 9 },
+  { "code": "MZ", "dial_code": "+258", "number_length": 9 },
+  { "code": "NA", "dial_code": "+264", "number_length": 9 },
+  { "code": "NE", "dial_code": "+227", "number_length": 8 },
+  { "code": "NG", "dial_code": "+234", "number_length": 10 },
+  { "code": "NI", "dial_code": "+505", "number_length": 8 },
+  { "code": "NL", "dial_code": "+31", "number_length": 9 },
+  { "code": "NO", "dial_code": "+47", "number_length": 8 },
+  { "code": "NP", "dial_code": "+977", "number_length": 10 },
+  { "code": "NR", "dial_code": "+674", "number_length": 7 },
+  { "code": "NZ", "dial_code": "+64", "number_length": 9 },
+  { "code": "OM", "dial_code": "+968", "number_length": 8 },
+  { "code": "PA", "dial_code": "+507", "number_length": 8 },
+  { "code": "PE", "dial_code": "+51", "number_length": 9 },
+  { "code": "PG", "dial_code": "+675", "number_length": 8 },
+  { "code": "PH", "dial_code": "+63", "number_length": 10 },
+  { "code": "PK", "dial_code": "+92", "number_length": 10 },
+  { "code": "PL", "dial_code": "+48", "number_length": 9 },
+  { "code": "PT", "dial_code": "+351", "number_length": 9 },
+  { "code": "PY", "dial_code": "+595", "number_length": 9 },
+  { "code": "QA", "dial_code": "+974", "number_length": 8 },
+  { "code": "RO", "dial_code": "+40", "number_length": 9 },
+  { "code": "RS", "dial_code": "+381", "number_length": 9 },
+  { "code": "RU", "dial_code": "+7", "number_length": 10 },
+  { "code": "RW", "dial_code": "+250", "number_length": 9 },
+  { "code": "SA", "dial_code": "+966", "number_length": 9 },
+  { "code": "SB", "dial_code": "+677", "number_length": 7 },
+  { "code": "SC", "dial_code": "+248", "number_length": 7 },
+  { "code": "SD", "dial_code": "+249", "number_length": 9 },
+  { "code": "SE", "dial_code": "+46", "number_length": 9 },
+  { "code": "SG", "dial_code": "+65", "number_length": 8 },
+  { "code": "SI", "dial_code": "+386", "number_length": 8 },
+  { "code": "SK", "dial_code": "+421", "number_length": 9 },
+  { "code": "SL", "dial_code": "+232", "number_length": 8 },
+  { "code": "SM", "dial_code": "+378", "number_length": 10 },
+  { "code": "SN", "dial_code": "+221", "number_length": 9 },
+  { "code": "SO", "dial_code": "+252", "number_length": 8 },
+  { "code": "SR", "dial_code": "+597", "number_length": 7 },
+  { "code": "SS", "dial_code": "+211", "number_length": 9 },
+  { "code": "ST", "dial_code": "+239", "number_length": 7 },
+  { "code": "SV", "dial_code": "+503", "number_length": 8 },
+  { "code": "SY", "dial_code": "+963", "number_length": 9 },
+  { "code": "SZ", "dial_code": "+268", "number_length": 8 },
+  { "code": "TD", "dial_code": "+235", "number_length": 8 },
+  { "code": "TG", "dial_code": "+228", "number_length": 8 },
+  { "code": "TH", "dial_code": "+66", "number_length": 9 },
+  { "code": "TJ", "dial_code": "+992", "number_length": 9 },
+  { "code": "TL", "dial_code": "+670", "number_length": 7 },
+  { "code": "TM", "dial_code": "+993", "number_length": 8 },
+  { "code": "TN", "dial_code": "+216", "number_length": 8 },
+  { "code": "TO", "dial_code": "+676", "number_length": 5 },
+  { "code": "TR", "dial_code": "+90", "number_length": 10 },
+  { "code": "TT", "dial_code": "+1-868", "number_length": 7 },
+  { "code": "TV", "dial_code": "+688", "number_length": 5 },
+  { "code": "TZ", "dial_code": "+255", "number_length": 9 },
+  { "code": "UA", "dial_code": "+380", "number_length": 9 },
+  { "code": "UG", "dial_code": "+256", "number_length": 9 },
+  { "code": "US", "dial_code": "+1", "number_length": 10 },
+  { "code": "UY", "dial_code": "+598", "number_length": 8 },
+  { "code": "UZ", "dial_code": "+998", "number_length": 9 },
+  { "code": "VA", "dial_code": "+379", "number_length": 9 },
+  { "code": "VC", "dial_code": "+1-784", "number_length": 7 },
+  { "code": "VE", "dial_code": "+58", "number_length": 10 },
+  { "code": "VG", "dial_code": "+1-284", "number_length": 7 },
+  { "code": "VI", "dial_code": "+1-340", "number_length": 7 },
+  { "code": "VN", "dial_code": "+84", "number_length": 9 },
+  { "code": "VU", "dial_code": "+678", "number_length": 5 },
+  { "code": "WS", "dial_code": "+685", "number_length": 5 },
+  { "code": "YE", "dial_code": "+967", "number_length": 9 },
+  { "code": "ZA", "dial_code": "+27", "number_length": 9 },
+  { "code": "ZM", "dial_code": "+260", "number_length": 9 },
+  { "code": "ZW", "dial_code": "+263", "number_length": 9 }
+]
 
 
 
@@ -384,7 +586,8 @@ function showPopUp() {
                             </div>
                             <div>
                                 <div class="form_text">Nr. de telefon</div>
-                                <div><input type="number" class="input" placeholder="060000000" name="phone" required></div>
+                                <select id="country"></select>
+                                <div><input type="tel" id="phone" placeholder="+1234567890" required ></div>
                             </div>
                             <div>
                                 <div class="form_title form_text">Mesaj</div>
@@ -402,6 +605,7 @@ function showPopUp() {
                 </div>
             </div>
         </div>
+        <div class="error" id="error"></div>
 	<button class="close-popup">&#10006;</button>`
     ;
 
@@ -416,7 +620,7 @@ function showPopUp() {
       popUp.remove(); // Remove the pop-up after animation
       showNavIconAndMenu();
 
-    }, 500); 
+    }, 500);
   });
 
   // EmailJS Connection
@@ -427,16 +631,73 @@ function showPopUp() {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
-      .then(function (response) {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Your message has been sent!');
-      }, function (error) {
-        console.error('FAILED...', error);
-        alert('Failed to send the message.');
-      });
+    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
+    if (!match) {
+      errorDiv.textContent = 'Unknown or unsupported country code.';
+      return;
+    }
+    else {
+      emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
+        .then(function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Your message has been sent!');
+        }, function (error) {
+          console.error('FAILED...', error);
+          alert('Failed to send the message.');
+        });
+    }
+
+    const remaining = phoneInput.value.replace(match.dial_code, '').replace(/\D/g, '');
+    if (remaining.length !== match.number_length) {
+      errorDiv.textContent = `Phone number should have ${match.number_length} digits after the prefix. Current: ${remaining.length}`;
+    }
+    else {
+      emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
+        .then(function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Your message has been sent!');
+        }, function (error) {
+          console.error('FAILED...', error);
+          alert('Failed to send the message.');
+        });
+    }
   });
+
+
+  const countrySelect = document.getElementById('country');
+  const phoneInput = document.getElementById('phone');
+  const errorDiv = document.getElementById('error');
+  
+  // Populate dropdown
+  countries.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.code;
+    opt.textContent = `${c.code} (${c.dial_code})`;
+    countrySelect.appendChild(opt);
+  });
+
+  // Sync prefix when country is selected
+  countrySelect.addEventListener('change', () => {
+    const selected = countries.find(c => c.code === countrySelect.value);
+    if (selected) {
+      if (!phoneInput.value.startsWith(selected.dial_code)) {
+        phoneInput.value = selected.dial_code;
+      }
+    }
+  });
+
+  // Detect prefix and auto-select country
+  phoneInput.addEventListener('input', () => {
+    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
+    if (match) {
+      countrySelect.value = match.code;
+    }
+  });
+
+
 }
+
+
 
 // Artist's data
 const images = {
@@ -512,12 +773,12 @@ function showAboutUs() {
   // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); 
+    popUp.classList.add('closed');
     setTimeout(() => {
       popUp.remove(); // Remove the pop-up after animation
       showNavIconAndMenu();
 
-    }, 500); 
+    }, 500);
   });
 
   // display artist's info in the pop-up
