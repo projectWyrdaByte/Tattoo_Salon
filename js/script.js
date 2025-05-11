@@ -527,224 +527,222 @@ function showPopUp() {
   const popUp = document.createElement('div');
   popUp.classList.add('popup');
   popUp.innerHTML = `
-        <div class="popup-content">
-            <div class="bg">
-                <div class="pop-up-contact">
-                    <div class="box1">
-                        <div class="title">Contactează-ne</div>
-                        <div class="info">
-                            <div>
-                                <div class="subtitle">Vizitează-ne</div>
-                                <div>
-                                    <a href="https://maps.app.goo.gl/PimnCLwfDJouARXq8" target="_blank" class="address"><div class="text">bd. Alexandru cel Bun <br/> or. Ialoveni, R. Moldova</div></a>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="subtitle">Contactează-ne</div>
-                                <div>
-                                    <div class="text">Noi așteaptăm mesajul tău la adresa:</div>
-                                    <div class="text">untamedinkstudio@gmail.com</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="subtitle">Sună la</div>
-                                <div>
-                                    <div class="text">079 992 446</div>
-                                    <div class="text">Luni-Vineri: 09:00-18:00</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="subtitle">Social media</div>
-                                <div class="icons">
-                                    <a href="https://www.facebook.com/profile.php?id=61573171680739" target="_blank"><img src="/images/facebook.png" class="icon"
-                                            alt="Facebook Icon"></a>
-                                    <a href="https://www.pinterest.com/untamedinkstudio/" target="_blank"><img src="/images/pinterest.png" class="icon"
-                                            alt="Pinterest Icon"></a>
-                                    <a href="https://www.instagram.com/_untamed_ink_/" target="_blank"><img src="/images/ig.png" class="icon"
-                                            alt="Instagram Icon"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Form -->
-                    <div class="box2">
-                        <div class="title">Programează-te</div>
-                        <form id="contact-form">
-                            <div class="firstname">
-                                <div class="form_text">Prenume</div>
-                                <div><input type="text" class="input" placeholder="Ion" name="name" required></div>
-                            </div>
-                            <div class="lastname">
-                                <div class="form_text">Nume</div>
-                                <div><input type="text" class="input" placeholder="Popescu" name="lastname" required>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="form_text">Email</div>
-                                <input type="email" class="input" placeholder="exemplu@gmail.com" name="email" required>
-                            </div>
-                            <div>
-                                <div class="form_text">Nr. de telefon</div>
-                                <select id="country"></select>
-                                <div><input type="tel" id="phone" placeholder="+1234567890" required ></div>
-                            </div>
-                            <div>
-                                <div class="form_title form_text">Mesaj</div>
-                                <textarea name="message" placeholder="Mesajul dvs..." required></textarea>
-                            </div>
-                            <div class="policy">
-                                <input type="checkbox" name="privacy" class="checkbox" required>
-                                <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a class="privacy" href="/pages/privacy_policy.html">Politica de confidențialitate.</a></span>
-                            </div>
-                            <div>
-                                <button class="btn" type="submit">Trimite Mesaj</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="popup-content">
+      <div class="bg">
+        <div class="pop-up-contact">
+          <div class="box1">
+            <div class="title">Contactează-ne</div>
+            <div class="info">
+              <div>
+                <div class="subtitle">Vizitează-ne</div>
+                <div>
+                  <a href="https://maps.app.goo.gl/PimnCLwfDJouARXq8" target="_blank" class="address">
+                    <div class="text">bd. Alexandru cel Bun <br/> or. Ialoveni, R. Moldova</div>
+                  </a>
                 </div>
+              </div>
+              <div>
+                <div class="subtitle">Contactează-ne</div>
+                <div>
+                  <div class="text">Noi așteaptăm mesajul tău la adresa:</div>
+                  <div class="text">untamedinkstudio@gmail.com</div>
+                </div>
+              </div>
+              <div>
+                <div class="subtitle">Sună la</div>
+                <div>
+                  <div class="text">079 992 446</div>
+                  <div class="text">Luni-Vineri: 09:00-18:00</div>
+                </div>
+              </div>
+              <div>
+                <div class="subtitle">Social media</div>
+                <div class="icons">
+                  <a href="https://www.facebook.com/profile.php?id=61573171680739" target="_blank"><img src="/images/facebook.png" class="icon" alt="Facebook Icon"></a>
+                  <a href="https://www.pinterest.com/untamedinkstudio/" target="_blank"><img src="/images/pinterest.png" class="icon" alt="Pinterest Icon"></a>
+                  <a href="https://www.instagram.com/_untamed_ink_/" target="_blank"><img src="/images/ig.png" class="icon" alt="Instagram Icon"></a>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="error" id="error"></div>
-	<button class="close-popup">&#10006;</button>`
-    ;
+          </div>
 
-  // Append the pop-up to the body
+          <div class="box2">
+            <div class="title">Programează-te</div>
+            <form id="contact-form">
+              <div class="firstname">
+                <div class="form_text">Prenume</div>
+                <div><input type="text" class="input" placeholder="Ion" name="name" required></div>
+              </div>
+              <div class="lastname">
+                <div class="form_text">Nume</div>
+                <div><input type="text" class="input" placeholder="Popescu" name="lastname" required></div>
+              </div>
+              <div>
+                <div class="form_text">Email</div>
+                <input type="email" class="input" placeholder="exemplu@gmail.com" name="email" required>
+              </div>
+              <div>
+                <div class="form_text">Nr. de telefon</div>
+                <div class="phone">
+                  <select id="country"></select>
+                  <div><input id="phone" min="1" placeholder="+37360123456" required></div>
+                </div>
+              </div>
+              <div>
+                <div class="form_title form_text">Mesaj</div>
+                <textarea name="message" placeholder="Mesajul dvs..." required></textarea>
+              </div>
+              <div class="policy">
+                <input type="checkbox" name="privacy" class="checkbox" required>
+                <span class="form_text">Aș dori să primesc mai multe informații despre companie. Înțeleg și sunt de acord cu <a class="privacy" href="/pages/privacy_policy.html">Politica de confidențialitate.</a></span>
+              </div>
+              <div>
+                <button class="btn" type="submit">Trimite Mesaj</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="error" id="error"></div>
+    <button class="close-popup">&#10006;</button>
+  `;
+
   document.body.appendChild(popUp);
 
-  // Close button functionality
   const closeButton = popUp.querySelector('.close-popup');
   closeButton.addEventListener('click', () => {
-    popUp.classList.add('closed'); // 
+    popUp.classList.add('closed');
     setTimeout(() => {
-      popUp.remove(); // Remove the pop-up after animation
+      popUp.remove();
       showNavIconAndMenu();
-
     }, 500);
   });
 
-  // EmailJS Connection
   const form = popUp.querySelector('#contact-form');
+  const errorDiv = document.getElementById('error');
+  const countrySelect = document.getElementById('country');
+  const phoneInput = document.getElementById('phone');
 
   emailjs.init("I3DnisvYrfkPlxjpy");
+
+  errorDiv.style = `
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+  `;
+
+  const closeErrorButton = document.createElement('span');
+  closeErrorButton.textContent = '×';
+  closeErrorButton.style.cursor = 'pointer';
+  closeErrorButton.style.marginLeft = '10px';
+  closeErrorButton.style.fontWeight = 'bold';
+  closeErrorButton.style.float = 'right';
+  closeErrorButton.addEventListener('click', () => {
+    errorDiv.style.display = 'none';
+  });
+  errorDiv.appendChild(closeErrorButton);
+
+  function showError(message) {
+    errorDiv.textContent = message;
+    errorDiv.appendChild(closeErrorButton);
+    errorDiv.style.display = 'block';
+    setTimeout(() => {
+      errorDiv.style.display = 'none';
+    }, 3000);
+  }
+
+  let match = null;
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
-    if (!match) {
-      errorDiv.textContent = 'Unknown or unsupported country code.';
+    if (!phoneInput.value.startsWith('0') && !phoneInput.value.startsWith('+')) {
+      showError('Phone number must start with 0 or a country code.');
       return;
     }
-    else {
-      emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
-        .then(function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-          alert('Your message has been sent!');
-        }, function (error) {
-          console.error('FAILED...', error);
-          alert('Failed to send the message.');
-        });
+
+    if (!match) {
+      match = countries.find(c => c.code === countrySelect.value);
     }
 
     const remaining = phoneInput.value.replace(match.dial_code, '').replace(/\D/g, '');
     if (remaining.length !== match.number_length) {
-      errorDiv.textContent = `Phone number should have ${match.number_length} digits after the prefix. Current: ${remaining.length}`;
+      showError(`Phone number should have ${match.number_length} digits after the prefix. Current: ${remaining.length}`);
+      return;
     }
-    else {
-      emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
-        .then(function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-          alert('Your message has been sent!');
-        }, function (error) {
-          console.error('FAILED...', error);
-          alert('Failed to send the message.');
-        });
-    }
+
+    emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
+      .then(response => {
+        alert('Mesajul a fost trimis cu succes!');
+      })
+      .catch(error => {
+        console.error('FAILED...', error);
+        showError('Failed to send the message.');
+      });
   });
 
-
-  const countrySelect = document.getElementById('country');
-  const phoneInput = document.getElementById('phone');
-  const errorDiv = document.getElementById('error');
-  
-  // Populate dropdown
+    // Build the country select options (show code + dial code in dropdown, only code in selected)
   countries.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c.code;
-    opt.textContent = `${c.code} (${c.dial_code})`;
+    opt.textContent = c.code; // Only abbreviation in the closed select
     countrySelect.appendChild(opt);
   });
 
-  // Sync prefix when country is selected
+  // Show code + dial code in dropdown when open, only code when closed
+  countrySelect.addEventListener('focus', function () {
+    Array.from(countrySelect.options).forEach(opt => {
+      const c = countries.find(c => c.code === opt.value);
+      if (c) opt.textContent = `${c.code} ${c.dial_code}`;
+    });
+  });
+  countrySelect.addEventListener('blur', function () {
+    Array.from(countrySelect.options).forEach(opt => {
+      opt.textContent = opt.value;
+    });
+  });
+
+  // Set default to Moldova
+  const defaultCountry = countries.find(c => c.code === 'MD');
+  if (defaultCountry) {
+    countrySelect.value = defaultCountry.code;
+    phoneInput.value = defaultCountry.dial_code;
+    match = defaultCountry;
+  }
+
   countrySelect.addEventListener('change', () => {
     const selected = countries.find(c => c.code === countrySelect.value);
     if (selected) {
-      if (!phoneInput.value.startsWith(selected.dial_code)) {
-        phoneInput.value = selected.dial_code;
+      phoneInput.value = selected.dial_code; // Show only dial code in input
+      match = selected;
+    }
+    countrySelect.blur();
+  });
+
+  // Keep the "+" and dial code, allow only numbers after it
+  phoneInput.addEventListener('input', function () {
+    const selected = countries.find(c => c.code === countrySelect.value);
+    if (selected) {
+      if (!this.value.startsWith(selected.dial_code)) {
+        this.value = selected.dial_code;
       }
+      const rest = this.value.slice(selected.dial_code.length).replace(/\D/g, '');
+      this.value = selected.dial_code + rest;
     }
   });
-
-  // Detect prefix and auto-select country
-  phoneInput.addEventListener('input', () => {
-    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
-    if (match) {
-      countrySelect.value = match.code;
-    }
-  });
-
-
 }
 
 
 
-// Artist's data
-const images = {
-  "person1": {
-    "name": "Mihai",
-    "age": 25,
-    "loves": "muzica",
-    "specializes": "Old-School tattoos",
-    "image": "/images/artist_2.jpg",
-    "projects": ["/images/oldschool1.jpg", "/images/oldschool2.jpg", "/images/oldschool3.jpg", "/images/oldschool4.jpg", "/images/oldschool5.jpg", "/images/oldschool6.jpg", "/images/oldschool7.jpeg"]
-  },
-  "person2": {
-    "name": "Ana",
-    "age": 23,
-    "loves": "arta",
-    "specializes": "Realism tattoos",
-    "image": "/images/artist_1.jpg",
-    "projects": ["/images/realism1.jpg", "/images/realism2.jpg", "/images/realism3.jpg", "/images/realism4.jpg", "/images/realism5.jpg", "/images/realism6.jpeg"]
-  },
-  "person3": {
-    "name": "Alex",
-    "age": 27,
-    "loves": "natura",
-    "specializes": "Outline tattoos",
-    "image": "/images/artist_3.jpg",
-    "projects": ["/images/outline1.jpg", "/images/outline2.jpg", "/images/outline3.jpg", "/images/outline4.jpg", "/images/outline5.jpg", "/images/outline6.jpg", "/images/outline7.jpeg"]
-  }
-};
 
-// Create a modal for displaying images
-const imageModal = document.createElement('div');
-imageModal.classList.add('image-modal');
-imageModal.innerHTML = `
-  <div class="image-modal-content">
-    <span class="close-button">&times;</span>
-    <img class="modal-image" src="" alt="Image">
-  </div>
-`;
-document.body.appendChild(imageModal);
-
-const modalImage = imageModal.querySelector('.modal-image');
-const closeButton = imageModal.querySelector('.close-button');
-
-// Close modal when the close button is clicked
-closeButton.addEventListener('click', () => {
-  imageModal.style.display = 'none';
-});
 
 function showAboutUs() {
   const popUp = document.createElement('div');
