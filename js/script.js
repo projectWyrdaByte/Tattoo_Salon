@@ -161,7 +161,7 @@ function showGallery() {
             <path
               clip-rule="evenodd"
               d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z"
-              fill-rule="evenodd"
+                fill-rule="evenodd"
             ></path>
           </svg>
           <svg
@@ -566,6 +566,7 @@ function showPopUp() {
             </div>
           </div>
 
+          <!-- Form -->
           <div class="box2">
             <div class="title">Programează-te</div>
             <form id="contact-form">
@@ -585,9 +586,9 @@ function showPopUp() {
                 <div class="form_text">Nr. de telefon</div>
                 <div class="phone">
                   <select id="country"></select>
-                  <div><input id="phone" min="1" placeholder="+37360123456" required></div>
-                </div>
-              </div>
+                  <input id="phone" class="input" min="1" placeholder="+37360123456" required>
+                </div>             
+                 </div>
               <div>
                 <div class="form_title form_text">Mesaj</div>
                 <textarea name="message" placeholder="Mesajul dvs..." required></textarea>
@@ -626,18 +627,16 @@ function showPopUp() {
 
   emailjs.init("I3DnisvYrfkPlxjpy");
 
-  errorDiv.style = `
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    display: none;
-    z-index: 1000;
-  `;
+  errorDiv.style.position = 'fixed';
+  errorDiv.style.top = '10px';
+  errorDiv.style.left = '10px';
+  errorDiv.style.backgroundColor = '#f8d7da';
+  errorDiv.style.color = '#721c24';
+  errorDiv.style.padding = '10px';
+  errorDiv.style.border = '1px solid #f5c6cb';
+  errorDiv.style.borderRadius = '5px';
+  errorDiv.style.display = 'none';
+  errorDiv.style.zIndex = '1000';
 
   const closeErrorButton = document.createElement('span');
   closeErrorButton.textContent = '×';
@@ -659,18 +658,23 @@ function showPopUp() {
     }, 3000);
   }
 
-  let match = null;
-
   form.addEventListener('submit', function (event) {
     event.preventDefault();
+
+    if (phoneInput.value.includes('-')) {
+      showError('Phone number cannot contain hyphens.');
+      return;
+    }
 
     if (!phoneInput.value.startsWith('0') && !phoneInput.value.startsWith('+')) {
       showError('Phone number must start with 0 or a country code.');
       return;
     }
 
+    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
     if (!match) {
-      match = countries.find(c => c.code === countrySelect.value);
+      showError('Unknown or unsupported country code.');
+      return;
     }
 
     const remaining = phoneInput.value.replace(match.dial_code, '').replace(/\D/g, '');
@@ -680,34 +684,21 @@ function showPopUp() {
     }
 
     emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
-      .then(response => {
+      .then(function (response) {
+        console.log('SUCCESS!', response.status, response.text);
         alert('Mesajul a fost trimis cu succes!');
-      })
-      .catch(error => {
+      }, function (error) {
         console.error('FAILED...', error);
         showError('Failed to send the message.');
       });
   });
 
-    // Build the country select options (show code + dial code in dropdown, only code in selected)
+  // Country dropdown now shows both country code and dial code
   countries.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c.code;
-    opt.textContent = c.code; // Only abbreviation in the closed select
+    opt.textContent = `${c.code} (${c.dial_code})`;  // Show country code and dial code
     countrySelect.appendChild(opt);
-  });
-
-  // Show code + dial code in dropdown when open, only code when closed
-  countrySelect.addEventListener('focus', function () {
-    Array.from(countrySelect.options).forEach(opt => {
-      const c = countries.find(c => c.code === opt.value);
-      if (c) opt.textContent = `${c.code} ${c.dial_code}`;
-    });
-  });
-  countrySelect.addEventListener('blur', function () {
-    Array.from(countrySelect.options).forEach(opt => {
-      opt.textContent = opt.value;
-    });
   });
 
   // Set default to Moldova
@@ -715,25 +706,34 @@ function showPopUp() {
   if (defaultCountry) {
     countrySelect.value = defaultCountry.code;
     phoneInput.value = defaultCountry.dial_code;
-    match = defaultCountry;
   }
 
   countrySelect.addEventListener('change', () => {
     const selected = countries.find(c => c.code === countrySelect.value);
     if (selected) {
-      phoneInput.value = selected.dial_code; // Show only dial code in input
-      match = selected;
+      const current = phoneInput.value;
+      const match = countries.find(c => current.startsWith(c.dial_code));
+      const remaining = match ? current.slice(match.dial_code.length).replace(/\D/g, '') : current.replace(/\D/g, '');
+      phoneInput.value = `${selected.dial_code}${remaining}`;  // Set the phone number input with dial code, but keep it hidden
     }
-    countrySelect.blur();
   });
 
-  // Keep the "+" and dial code, allow only numbers after it
+  phoneInput.addEventListener('input', () => {
+    const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
+    if (match) {
+      countrySelect.value = match.code;
+    }
+  });
+
+  // Filter: allow only numbers after the dial code in the phone input
   phoneInput.addEventListener('input', function () {
     const selected = countries.find(c => c.code === countrySelect.value);
     if (selected) {
+      // Always keep the dial code at the start
       if (!this.value.startsWith(selected.dial_code)) {
         this.value = selected.dial_code;
       }
+      // Only allow numbers after the dial code
       const rest = this.value.slice(selected.dial_code.length).replace(/\D/g, '');
       this.value = selected.dial_code + rest;
     }
