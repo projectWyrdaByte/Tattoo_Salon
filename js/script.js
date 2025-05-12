@@ -586,7 +586,7 @@ function showPopUp() {
                 <div class="form_text">Nr. de telefon</div>
                 <div class="phone">
                   <select id="country"></select>
-                  <input id="phone" class="input" min="1" placeholder="+37360123456" required>
+                  <input class="p_number" id="phone" min="1" placeholder="+37360123456" required>
                 </div>             
                  </div>
               <div>

@@ -1366,7 +1366,6 @@ main {
     border-radius: 0;
     border: 1px solid gray;
     height: 20px;
-    margin-top: 1px;
     outline: none;
 }
 
@@ -1377,9 +1376,11 @@ main {
     background-color: #181818;
 }
 
-.phone #phone {
+
+.p_number {
     border-radius: 0;
     border: 1px solid gray;
     height: 20px;
     outline: none;
+    width: 68%
 }
