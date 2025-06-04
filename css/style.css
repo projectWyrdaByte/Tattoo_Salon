@@ -466,6 +466,7 @@ form {
     border-radius: 6px;
     border: 1px solid gray;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 input::placeholder {
@@ -504,6 +505,7 @@ textarea {
     height: 70px;
     width: 97%;
     padding-left: 10px;
+    padding-right: 10px;
     padding-top: 10px;
 }
 
@@ -1365,8 +1367,11 @@ main {
 .phone select {
     border-radius: 0;
     border: 1px solid gray;
-    height: 20px;
+    height: 40px;
+    padding-left: 6px;
     outline: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 .head {
@@ -1380,7 +1385,11 @@ main {
 .p_number {
     border-radius: 0;
     border: 1px solid gray;
-    height: 20px;
+    height: 40px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     outline: none;
     width: 68%
 }

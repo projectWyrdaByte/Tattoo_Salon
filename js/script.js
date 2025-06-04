@@ -521,8 +521,6 @@ const countries = [
   { "code": "ZW", "dial_code": "+263", "number_length": 9 }
 ]
 
-
-
 function showPopUp() {
   const popUp = document.createElement('div');
   popUp.classList.add('popup');
@@ -586,9 +584,9 @@ function showPopUp() {
                 <div class="form_text">Nr. de telefon</div>
                 <div class="phone">
                   <select id="country"></select>
-                  <input class="p_number" id="phone" min="1" placeholder="+37360123456" required>
+                  <input class="p_number" name="phone" type="text" id="phone" min="1" placeholder="+37360123456" required>
                 </div>             
-                 </div>
+              </div>
               <div>
                 <div class="form_title form_text">Mesaj</div>
                 <textarea name="message" placeholder="Mesajul dvs..." required></textarea>
@@ -627,6 +625,7 @@ function showPopUp() {
 
   emailjs.init("I3DnisvYrfkPlxjpy");
 
+  // Error box style
   errorDiv.style.position = 'fixed';
   errorDiv.style.top = '10px';
   errorDiv.style.left = '10px';
@@ -658,50 +657,76 @@ function showPopUp() {
     }, 3000);
   }
 
+  function showSuccessPopup(message) {
+    const successDiv = document.createElement('div');
+    successDiv.textContent = message;
+    successDiv.style.position = 'fixed';
+    successDiv.style.top = '10px';
+    successDiv.style.right = '10px';
+    successDiv.style.backgroundColor = '#d4edda';
+    successDiv.style.color = '#155724';
+    successDiv.style.padding = '10px 15px';
+    successDiv.style.border = '1px solid #c3e6cb';
+    successDiv.style.borderRadius = '5px';
+    successDiv.style.zIndex = '1000';
+    successDiv.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+
+    const closeBtn = document.createElement('span');
+    closeBtn.textContent = '×';
+    closeBtn.style.marginLeft = '10px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.float = 'right';
+    closeBtn.style.fontWeight = 'bold';
+    closeBtn.onclick = () => successDiv.remove();
+
+    successDiv.appendChild(closeBtn);
+    document.body.appendChild(successDiv);
+
+    setTimeout(() => {
+      successDiv.remove();
+    }, 20000);
+  }
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    if (phoneInput.value.includes('-')) {
-      showError('Phone number cannot contain hyphens.');
-      return;
-    }
-
-    if (!phoneInput.value.startsWith('0') && !phoneInput.value.startsWith('+')) {
-      showError('Phone number must start with 0 or a country code.');
-      return;
-    }
-
     const match = countries.find(c => phoneInput.value.startsWith(c.dial_code));
-    if (!match) {
-      showError('Unknown or unsupported country code.');
+    const remaining = phoneInput.value.replace(match.dial_code, '').replace(/\D/g, '');
+
+    if (remaining.length !== match.number_length) {
+      showError(`Număr invalid. Necesare: ${match.number_length}.`);
       return;
     }
 
-    const remaining = phoneInput.value.replace(match.dial_code, '').replace(/\D/g, '');
-    if (remaining.length !== match.number_length) {
-      showError(`Phone number should have ${match.number_length} digits after the prefix. Current: ${remaining.length}`);
-      return;
-    }
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Se trimite...';
 
     emailjs.sendForm('service_uqjphyf', 'template_qiobdx5', this)
       .then(function (response) {
         console.log('SUCCESS!', response.status, response.text);
-        alert('Mesajul a fost trimis cu succes!');
+        showSuccessPopup('Mesajul a fost trimis cu succes!');
+        form.reset();
+        phoneInput.value = defaultCountry ? defaultCountry.dial_code : '';
       }, function (error) {
         console.error('FAILED...', error);
-        showError('Failed to send the message.');
+        showError('Eroare la trimiterea mesajului.');
+      })
+      .finally(() => {
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Trimite Mesaj';
+        }, 5000);
       });
   });
 
-  // Country dropdown now shows both country code and dial code
   countries.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c.code;
-    opt.textContent = `${c.code} (${c.dial_code})`;  // Show country code and dial code
+    opt.textContent = `${c.code} (${c.dial_code})`;
     countrySelect.appendChild(opt);
   });
 
-  // Set default to Moldova
   const defaultCountry = countries.find(c => c.code === 'MD');
   if (defaultCountry) {
     countrySelect.value = defaultCountry.code;
@@ -714,7 +739,7 @@ function showPopUp() {
       const current = phoneInput.value;
       const match = countries.find(c => current.startsWith(c.dial_code));
       const remaining = match ? current.slice(match.dial_code.length).replace(/\D/g, '') : current.replace(/\D/g, '');
-      phoneInput.value = `${selected.dial_code}${remaining}`;  // Set the phone number input with dial code, but keep it hidden
+      phoneInput.value = `${selected.dial_code}${remaining}`;
     }
   });
 
@@ -725,15 +750,12 @@ function showPopUp() {
     }
   });
 
-  // Filter: allow only numbers after the dial code in the phone input
   phoneInput.addEventListener('input', function () {
     const selected = countries.find(c => c.code === countrySelect.value);
     if (selected) {
-      // Always keep the dial code at the start
       if (!this.value.startsWith(selected.dial_code)) {
         this.value = selected.dial_code;
       }
-      // Only allow numbers after the dial code
       const rest = this.value.slice(selected.dial_code.length).replace(/\D/g, '');
       this.value = selected.dial_code + rest;
     }
