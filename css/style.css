@@ -26,7 +26,6 @@
 body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
     height: 100%;
     color: var(--text-color);
 }
@@ -168,7 +167,7 @@ a {
     height: 22.5px;
     position: relative;
     z-index: 10;
-    margin: 50px auto;
+    margin: 228px auto;
     transform: rotate(0deg);
     transition: var(--transition-duration) ease-in-out;
     cursor: pointer;
@@ -258,7 +257,7 @@ a {
     .nav-icon {
         width: 30px;
         height: 20px;
-        margin: 25px auto;
+        margin: 8px auto;
     }
 
     .nav-icon span {
