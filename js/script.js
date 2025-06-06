@@ -668,7 +668,7 @@ function showPopUp() {
     successDiv.style.padding = '10px 15px';
     successDiv.style.border = '1px solid #c3e6cb';
     successDiv.style.borderRadius = '5px';
-    successDiv.style.zIndex = '1000';
+    successDiv.style.zIndex = '101000';
     successDiv.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
 
     const closeBtn = document.createElement('span');

@@ -12,21 +12,22 @@
 </head>
 
 <body>
-  <div id="nav" class="nav">
+  <!-- Move nav after the nav-icon-container -->
+  <div class="nav-icon-container">
+    <div id="nav-icon" class="nav-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="nav" class="nav" style="display: none;">
     <div class="nav-container">
       <div class="nav-item" onclick="window.location.href='../index1.html'">ACASĂ</div>
       <div class="nav-item" onclick="window.location.href='../index1.html#about'">DESPRE NOI</div>
       <div class="nav-item" onclick="window.location.href='../index1.html#gallery'">GALERIE</div>
       <div class="nav-item" onclick="window.location.href='../index1.html#contact'">CONTACTE</div>
       <div class="nav-item" onclick="window.location.href='sim.html'">SIMULATOR</div>
-    </div>
-  </div>
-
-  <div class="nav-icon-container">
-    <div id="nav-icon" class="nav-icon">
-      <span></span>
-      <span></span>
-      <span></span>
     </div>
   </div>
 
@@ -710,6 +711,10 @@
           currentModelType = e.target.value;
           document.getElementById('bodyParts').classList.remove('hidden');
 
+          // Clear decal and reset controls when switching gender
+          clearCurrentDecal();
+          resetControls();
+
           if (currentBodyPart) {
             const selectedModel = models.find(m => m.name === currentModelType);
             if (selectedModel) {
@@ -727,6 +732,10 @@
             document.getElementById(`select${p.charAt(0).toUpperCase() + p.slice(1)}`).classList.remove('active');
           });
           document.getElementById(`select${part.charAt(0).toUpperCase() + part.slice(1)}`).classList.add('active');
+
+          // Clear decal and reset controls when switching body part
+          clearCurrentDecal();
+          resetControls();
 
           const selectedGender = document.querySelector('input[name="tabs"]:checked').value;
           const selectedModel = models.find(m => m.name === selectedGender);
@@ -780,25 +789,37 @@
 
       // Toggle nav menu
       navIcon.addEventListener('click', function () {
+        const nav = document.getElementById('nav');
         this.classList.toggle('open');
-        nav.classList.toggle('active');
 
-        // Animate nav items
-        if (nav.classList.contains('active')) {
-          navItems.forEach((item, index) => {
-            setTimeout(() => {
-              item.classList.add('visible');
-            }, 100 * index);
-          });
+        if (this.classList.contains('open')) {
+          nav.style.display = 'flex';
+          // Small delay to ensure display: flex is applied before adding active class
+          setTimeout(() => {
+            nav.classList.add('active');
+            // Animate nav items
+            navItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, 100 * index);
+            });
+          }, 10);
         } else {
+          nav.classList.remove('active');
           navItems.forEach((item) => {
             item.classList.remove('visible');
           });
+          // Wait for animations to complete before hiding nav
+          setTimeout(() => {
+            nav.style.display = 'none';
+          }, 300); // Match this with your transition duration
         }
       });
 
       // Close nav when clicking outside
       document.addEventListener('click', function (event) {
+        const nav = document.getElementById('nav');
+        const navIcon = document.getElementById('nav-icon');
         const isClickInsideNav = nav.contains(event.target);
         const isClickOnNavIcon = navIcon.contains(event.target);
 
@@ -808,6 +829,10 @@
           navItems.forEach((item) => {
             item.classList.remove('visible');
           });
+          // Wait for animations to complete before hiding nav
+          setTimeout(() => {
+            nav.style.display = 'none';
+          }, 300);
         }
       });
 

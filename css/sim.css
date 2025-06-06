@@ -448,10 +448,10 @@ input[type="range"]::-moz-range-thumb {
   padding: 10px 20px;
   background: rgba(255, 255, 255, 0.95);
   border: none;
-  border-radius: 30px;
+  border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  z-index: 1001;
+  z-index: 998;
   display: none;
   transition: opacity 0.3s, transform 0.3s;
 }
@@ -494,6 +494,7 @@ input[type="range"]::-moz-range-thumb {
 .mainTitle {
   font-size: 36px;
   font-weight: 500;
+
 }
 
 .upload-section {
@@ -788,7 +789,8 @@ input[type="range"].slider::-ms-fill-upper {
 
 /* Nav */
 .nav {
-  display: flex;
+  display: none;
+  /* Change default to none */
   flex-direction: column;
   padding: 25px 35px;
   font-size: 64px;
@@ -799,7 +801,12 @@ input[type="range"].slider::-ms-fill-upper {
   top: 0;
   right: 0;
   height: 100vh;
-  z-index: 1000;
+  z-index: 999;
+}
+
+/* Add new class for when nav is visible */
+.nav.visible {
+  display: flex;
 }
 
 .nav-container {
@@ -852,7 +859,7 @@ input[type="range"].slider::-ms-fill-upper {
   width: 30px;
   height: 22.5px;
   position: relative;
-  z-index: 10;
+  z-index: 1001;
   margin: 50px auto;
   transform: rotate(0deg);
   transition: var(--transition-duration) ease-in-out;
