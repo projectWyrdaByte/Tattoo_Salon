@@ -766,7 +766,81 @@ function showPopUp() {
 
 
 
+const images = {
+  person1: {
+    name: "Mihai",
+    age: "25",
+    loves: "Arta tradițională japoneză",
+    specializes: "Tatuaje în stil japonez tradițional",
+    image: "/images/artist_2.jpg",
+    projects: [
+      "/images/oldschool1.jpg",
+      "/images/oldschool2.jpg",
+      "/images/oldschool3.jpg",
+      "/images/oldschool4.jpg",
+      "/images/oldschool5.jpg",
+      "/images/oldschool6.jpg",
+      "/images/oldschool7.jpeg"
+    ]
+  },
+  person2: {
+    name: "Ana",
+    age: "28",
+    loves: "Arta minimalistă",
+    specializes: "Tatuaje fine line și minimaliste",
+    image: "/images/artist_1.jpg",
+    projects: [
+      "/images/outline1.jpg",
+      "/images/outline2.jpg", 
+      "/images/outline3.jpg",
+      "/images/outline4.jpg",
+      "/images/outline5.jpg",
+      "/images/outline6.jpg",
+      "/images/outline7.jpeg"
+    ]
+  },
+  person3: {
+    name: "Alex",
+    age: "30",
+    loves: "Arta realistă",
+    specializes: "Tatuaje realiste și portrete",
+    image: "/images/artist_3.jpg", 
+    projects: [
+      "/images/realism1.jpg",
+      "/images/realism2.jpg",
+      "/images/realism3.jpg",
+      "/images/realism4.jpg",
+      "/images/realism5.jpg",
+      "/images/realism6.jpeg"
+    ]
+  }
+};
+
 function showAboutUs() {
+  // Create image modal first
+  const imageModal = document.createElement('div');
+  imageModal.classList.add('image-modal');
+  imageModal.innerHTML = `
+    <div class="image-modal-content">
+      <span class="close-button">&times;</span>
+      <img class="modal-image" src="" alt="Image">
+    </div>
+  `;
+  document.body.appendChild(imageModal);
+
+  const modalImage = imageModal.querySelector('.modal-image');
+  const closeModalBtn = imageModal.querySelector('.close-button');
+
+  closeModalBtn.addEventListener('click', () => {
+    imageModal.style.display = 'none';
+  });
+
+  imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+      imageModal.style.display = 'none';
+    }
+  });
+
   const popUp = document.createElement('div');
   popUp.classList.add('popup');
   popUp.innerHTML = `

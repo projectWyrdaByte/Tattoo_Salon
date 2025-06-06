@@ -61,6 +61,7 @@ body {
   height: 90%;
   overflow-y: scroll;
   scrollbar-color: #e6eef9 transparent;
+  padding-right: 8px;
 }
 
 .arrow-btn {
@@ -680,7 +681,6 @@ input[type="range"]::-moz-range-thumb {
   transform: translateX(0);
 }
 
-
 #decalControls {
   background-color: #2f2e33;
   padding-top: 16px;
@@ -696,20 +696,16 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"].slider {
   -webkit-appearance: none;
   height: 5px;
-  /* adjust as needed */
   background: transparent;
 }
 
-/* The track (bar) */
 input[type="range"].slider::-webkit-slider-runnable-track {
   height: 2px;
   border: 0;
-  /* match this to the height above */
   background: #545456;
   border-radius: 5px;
 }
 
-/* The thumb (handle) */
 input[type="range"].slider::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
@@ -720,7 +716,6 @@ input[type="range"].slider::-webkit-slider-thumb {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Firefox */
 input[type="range"].slider::-moz-range-track {
   background: #545456;
   height: 2px;
@@ -799,7 +794,6 @@ input[type="range"].slider::-ms-fill-upper {
 /* Nav */
 .nav {
   display: none;
-  /* Change default to none */
   flex-direction: column;
   padding: 25px 35px;
   font-size: 64px;
@@ -813,7 +807,6 @@ input[type="range"].slider::-ms-fill-upper {
   z-index: 999;
 }
 
-/* Add new class for when nav is visible */
 .nav.visible {
   display: flex;
 }
@@ -1102,4 +1095,3 @@ input[type="range"].slider::-ms-fill-upper {
 }
 
 }
-

@@ -696,8 +696,8 @@ input::-webkit-inner-spin-button {
 
 .close-popup {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 40px;
+    right: 20px;
     padding: 14px 16px;
     line-height: 16px;
     font-size: 32px;
@@ -1240,7 +1240,6 @@ main {
     height: 32px;
 }
 
-/* Centered names columnn */
 .names-column {
     display: flex;
     flex-direction: column;
@@ -1265,21 +1264,27 @@ main {
 /* Back button */
 .back-button {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    padding: 10px 20px;
+    top: 46px;
+    right: 30px;
+    padding: 6px 10px;
     font-size: 16px;
-    background-color: transparent;
-    color: var(--light-text-color);
+    background-color: #e6eef9;
+    color: black;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color var(--transition-duration) ease-in-out;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.back-button:hover {
-    background-color: var(--accent-color);
+.back-button:hover{
+    background-color: #5a91c0;
+    color: white;
+    transform: translateY(-2px);
 }
+
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -1381,6 +1386,12 @@ main {
     background-color: #181818;
 }
 
+@media screen and (max-width: 768px) {
+    .head {
+        display: none;
+    }
+    
+}
 
 .p_number {
     border-radius: 0;
