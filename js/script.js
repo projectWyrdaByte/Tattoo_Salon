@@ -853,3 +853,19 @@ function showAboutUs() {
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const directNavigation = sessionStorage.getItem('directNavigation');
+  const navigateTo = sessionStorage.getItem('navigateTo');
+
+  if (directNavigation === 'true' && navigateTo === 'home') {
+    const animateButton = document.getElementById('animateCamera');
+    if (animateButton) {
+      animateButton.style.display = 'none';
+    }
+  }
+
+  // Clear the navigation state
+  sessionStorage.removeItem('directNavigation');
+  sessionStorage.removeItem('navigateTo');
+});
