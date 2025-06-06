@@ -61,7 +61,7 @@ function animate() {
 	TWEEN.update();
 
 	// Update the camera position display
-	
+
 	controls.update();
 	renderer.render(scene, camera);
 }
@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const button = document.getElementById('animateCamera');
 	if (button) {
 		button.addEventListener('click', () => {
-			console.log('Button clicked'); 
+			console.log('Button clicked');
 			animateCamera();
 		});
 	} else {
-		console.error('Button not fondd!'); 
+		console.error('Button not fondd!');
 	}
 });
 
@@ -120,7 +120,7 @@ function animateCamera() {
 			const navIconContainer = document.querySelector('.nav-icon-container');
 			const navIcon = document.getElementById('nav-icon');
 			navIconContainer.style.display = 'block';
-			navIcon.classList.add('open'); 
+			navIcon.classList.add('open');
 
 			setTimeout(() => {
 				navIconContainer.classList.add('visible');
@@ -225,7 +225,7 @@ function animateToContacts() {
 		nav.classList.remove('visible', 'active');
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); 
+	}, navItems.length * 200 + 300);
 
 	// Define start and end positions
 	const startPos = {
@@ -299,7 +299,7 @@ function animateToGallery() {
 		nav.classList.remove('visible', 'active');
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
-	}, navItems.length * 200 + 300); 
+	}, navItems.length * 200 + 300);
 
 	// Define start and end positions
 	const startPos = {
@@ -398,5 +398,58 @@ function closeNavMenu(callback) {
 		nav.style.display = 'none';
 		navIcon.classList.remove('open');
 		callback();
-	}, navItems.length * 200 + 300); 
+	}, navItems.length * 200 + 300);
 }
+
+// Add these constants at the top of the file after scene setup
+const DEFAULT_CAMERA_POSITION = {
+	x: -4.77,
+	y: 19.81,
+	z: -1.35,
+	targetX: -4.61,
+	targetY: 19.11,
+	targetZ: -13.01
+};
+
+// Modify the DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', function () {
+	const navigateTo = sessionStorage.getItem('navigateTo');
+	if (navigateTo) {
+		// Set camera to default position first
+		camera.position.set(
+			DEFAULT_CAMERA_POSITION.x,
+			DEFAULT_CAMERA_POSITION.y,
+			DEFAULT_CAMERA_POSITION.z
+		);
+		controls.target.set(
+			DEFAULT_CAMERA_POSITION.targetX,
+			DEFAULT_CAMERA_POSITION.targetY,
+			DEFAULT_CAMERA_POSITION.targetZ
+		);
+		camera.lookAt(
+			DEFAULT_CAMERA_POSITION.targetX,
+			DEFAULT_CAMERA_POSITION.targetY,
+			DEFAULT_CAMERA_POSITION.targetZ
+		);
+		controls.update();
+
+		// Clear the stored state
+		sessionStorage.removeItem('navigateTo');
+
+		// Trigger the appropriate animation based on the stored state
+		switch (navigateTo) {
+			case 'about':
+				animateToAboutUs();
+				break;
+			case 'gallery':
+				animateToGallery();
+				break;
+			case 'contact':
+				animateToContacts();
+				break;
+			case 'home':
+				animateCamera();
+				break;
+		}
+	}
+});
